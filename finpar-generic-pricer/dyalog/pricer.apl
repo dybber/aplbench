@@ -206,7 +206,7 @@ ugaussian ← { ugaussianEl ¨ ⍵ }
 ⍝ Sets the values in the upper triangle to zero
 ∇ m ← clearUpperTriangle m;n
   n ← 1↑⍴ m
-  m ← m × ~(⍳n)∘.<⍳n
+  m ← m × (⍳n)∘.≥⍳n
 ∇
 
 ⍝ Black-Scholes
