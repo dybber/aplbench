@@ -1,17 +1,16 @@
-#!/usr/local/bin/mapl -script
-
+#!/usr/bin/env rundyalog
 ⍝ Ported to APL from the ELI version available at http://fastarray.appspot.com/
+
+⍝ Make sure we are 1-indexing
+⎕IO ← 1
+
+csv←import'../../shared/dyalog/csv.apl'
 
 num_iterations ← 2 ⍝ number of iteration
 
-∇ data ← path readFile filename
-  tie ← (path, filename) ⎕NTIE 0
-  vec ← ⎕NREAD tie 80 (⎕NSIZE tie) 0
-  data ← ((⎕UCS 13) (⎕UCS 10) ' ') ⎕VFI vec
-  data ← ¯1↓⊃1↓data
-∇
-
-∇ z ← temp hotspot power;Cap;Rx;Ry;Rz;step;k;cnt;m1;m2;x;n1;n2;y;c1;c2;row;col;gw;gh
+hotspot ← {
+  temp ← ⍺
+  power ← ⍵
   t_chip ← 0.0005
   height ← width ← 0.016
   amb_temp ← 80.0
@@ -29,14 +28,6 @@ num_iterations ← 2 ⍝ number of iteration
   max_slope ← MAX_PD ÷ (FACTOR_CHIP × t_chip × SPEC_HEAT_SI)
   step ← PRECISION ÷ max_slope
 
-  ⍝ ⍞←'step size: ' 
-  ⍝ ⍞ ← step
-  ⍝ ⍞ ← ⎕TC  
-  ⍝ ⍞ ← 'Rx Ry Rz Cap'
-  ⍝ ⍞ ← ⎕TC  
-  ⍝ ⍞ ← Rx Ry Rz Cap
-  ⍝ ⍞ ← ⎕TC  
-
   k ← 0
   c1 ← c2 ← (row,col)⍴2
   c1[;1] ← 1
@@ -44,7 +35,8 @@ num_iterations ← 2 ⍝ number of iteration
   c2[1;] ← 1
   c2[row;] ← 1
 
-  :For k :In ⍳num_iterations
+  iter ← {
+    temp ← ⍵
     m1 ← (0 1↓temp),0
     m2 ← 0,(0 ¯1↓temp)
     x ← (m1 + m2) - c1 × temp
@@ -54,19 +46,17 @@ num_iterations ← 2 ⍝ number of iteration
     y ← (n1 + n2) - c2 × temp
 
     delta ← (step ÷ Cap) × (power + (y ÷ Ry) + (x ÷ Rx) + (amb_temp - temp) ÷ Rz)
-    temp ← temp + delta
-  :EndFor
+    temp + delta
+  }
 
-  z ← temp
-∇
+  (iter ⍣ num_iterations) temp
+}
 
 ⍝ data files
-datapath ← '../data/'
-temp_file ← 'temp_512'
-power_file ← 'power_512'
+path ← '../data/'
 size ← 512 512
 
-temp ← size ⍴ datapath readFile temp_file
-power ← size ⍴ datapath readFile power_file
+temp ← size ⍴ csv.read (path, 'temp_512')
+power ← size ⍴ csv.read (path, 'power_512')
 
 r ← temp hotspot power
