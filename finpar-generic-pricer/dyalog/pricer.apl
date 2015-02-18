@@ -23,7 +23,7 @@ divisor ← 2*30
 
 
 contract ← 2
-num_mc_it ← 1048576
+num_mc_it ← 10⍝48576
 num_dates ← 5
 num_under ← 3
 num_models ← 1
@@ -34,7 +34,7 @@ dirVec ← csv.read (path ,'direction_vectors')
 md_drifts ← csv.read (path, 'md_drifts')
 md_c ← csv.read (path, 'md_c')
 md_disc ← 5 ⍴ csv.read (path, 'md_disc')
-md_starts ← csv.read (path, 'md_starts')
+md_starts ← 3 ⍴ csv.read (path, 'md_starts')
 md_vols ← csv.read (path, 'md_vols')
 bb_data ← csv.read (path, 'bb_data')
 bb_ind ← csv.read (path, 'bb_ind')
@@ -110,7 +110,8 @@ ugaussianEl ← {
    R2 ← x × ×dp
 
   ⍝ conditional  
-  (1 + 0.425≥|dp) ⊃ R2 R1
+  R2 × (1 - 0.425≥|dp) + R1 × (0.425≥|dp)
+⍝  (1 + 0.425≥|dp) ⊃ R2 R1
 }
 
 ugaussian ← { ugaussianEl ¨ ⍵ }
@@ -156,7 +157,7 @@ combineVs ← {
 mkPrices ← {
   (md_starts md_vols md_drifts noises) ← ⍵
   e_rows ← *combineVs noises md_vols md_drifts
-  1↓⍉×\⍉(md_starts ,[1] e_rows)
+  1↓⍉×\ md_starts , ⍉ e_rows
 }
 
 blackScholes ← {
