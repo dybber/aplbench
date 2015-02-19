@@ -60,3 +60,8 @@ temp ← size ⍴ csv.read (path, 'temp_512')
 power ← size ⍴ csv.read (path, 'power_512')
 
 r ← temp hotspot power
+
+⍝ Summing the terms is not really part of the benchmark
+⍝ and doesn't really make sense. 
+⍝ I just added it to output a single number instead of a matrix
++/+/r
