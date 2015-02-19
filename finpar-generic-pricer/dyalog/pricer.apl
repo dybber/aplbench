@@ -110,7 +110,7 @@ ugaussianEl ← {
    R2 ← x × ×dp
 
   ⍝ conditional  
-  R2 × (1 - 0.425≥|dp) + R1 × (0.425≥|dp)
+  (R2 × (1 - 0.425≥|dp)) + R1 × (0.425≥|dp)
 ⍝  (1 + 0.425≥|dp) ⊃ R2 R1
 }
 
