@@ -209,9 +209,14 @@ brownianBridge ← {
   bbrow ← ((num_dates+1) num_under)⍴0
 
   step ← {
-    next ← (bb_lw[⍵]×bbrow[bb_li[⍵]+1;]) + sz[⍵;] + (bb_rw[⍵]×bbrow[bb_ri[⍵]+1;])
-    ⍝ bbrow[bb_bi[⍵]+1;] ← next ⍝ Parse error!
-    ⍵+1
+    i ← ⍵
+    iter ← {
+      j ← ⍵
+      bbrow[bb_bi[i]+1;j] ← (bb_lw[i]×bbrow[bb_li[i]+1;j]) + sz[i;j] + (bb_rw[i]×bbrow[bb_ri[i]+1;j])
+      j+1
+    }
+    v ← (iter ⍣ num_under) 1
+    i+1
   }
   
   variable_not_used ← (step ⍣ num_dates) 1
