@@ -109,7 +109,7 @@ divisor ← 2*30
 
 
 contract ← 2
-num_mc_it ← 1048576
+num_mc_it ← 10 ⍝48576
 num_dates ← 5
 num_under ← 3
 num_models ← 1
@@ -206,7 +206,7 @@ brownianBridge ← {
   bb_rw ← bb_data[3;]
   gauss2Dt ← (num_dates num_under)⍴gauss
   sz ← (⍉(num_under num_dates)⍴bb_sd) × gauss2Dt
-  bbrow ← ((num_dates+1) num_under)⍴0
+  bbrow ← ((num_dates+1) num_under)⍴0.0
 
   step ← {
     next ← (bb_lw[⍵]×bbrow[bb_li[⍵]+1;]) + sz[⍵;] + (bb_rw[⍵]×bbrow[bb_ri[⍵]+1;])
