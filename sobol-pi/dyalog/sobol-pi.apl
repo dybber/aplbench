@@ -19,10 +19,7 @@ grayCode ← { ⍵ xor ⍵ srl 1 }
 
 path ← '../data/'
 dirVec ← csv.read (path ,'direction_vectors')
-⎕ ← 2
-⎕← (⍳10) ∘.testBit ⍳30 
 
-⎕←⍴dirVec
 ⍝ Sobol sequences using inductive approach
 sobolIndI ← {
   dirVec ← ⍵

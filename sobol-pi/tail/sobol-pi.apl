@@ -76,9 +76,7 @@ dv ← dv, 773877944 930190180 554263078 842348331
 
 dirVec ← 15 30⍴dv
 
-w ← 32 ⍝ word size
-
-testBit ← { 0≠⍵ ⎕INT32AND 1 ⎕INT32SHL ⍺ }
+testBit ← { 0≠⍵ ⎕INT32AND 1 ⎕INT32SHL (⍺-1) }
 grayCode ← { ⍵ ⎕INT32XOR ⍵ ⎕INT32SHR 1 }
 
 ⍝ Sobol sequences using inductive approach
@@ -87,11 +85,8 @@ sobolIndI ← {
   n ← ⍺
   bitsNum ← (⍴dirVec)[⊃⍴⍴dirVec]
   bits  ← ⍳bitsNum
-  ⍝ ⎕ ← bits
-  ⍝ ⎕ ← n
   is ← n ∘.{⍵ testBit (grayCode ⍺)} bits
-  ⍝ ⎕←is
-  is ⎕INT32XOR.× ⍉dirVec 
+  is ⎕INT32XOR.× ⍉dirVec
 }
 
 sobolIndR ← {
@@ -101,7 +96,7 @@ sobolIndR ← {
 }
 
 ⍝ Number of iterations
-n ← 1000000
+n ← 10000
 
 ⍝ Compute 2 dimensional sobol vector
 s ← (⍳n) sobolIndR 2 30⍴dirVec
@@ -109,3 +104,4 @@ s ← (⍳n) sobolIndR 2 30⍴dirVec
 ⍝ Compute pi
 pi ← 4×(+/1>(+/s*2)*÷2)÷n
 pi
+
