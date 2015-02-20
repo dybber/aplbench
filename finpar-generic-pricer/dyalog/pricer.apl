@@ -17,13 +17,8 @@ testBit ← {(dec2bin ⍵)[w-⍺-1]} ⍝ Does not work for other than scalar arg
 
 grayCode ← { ⍵ xor ⍵ srl 1 }
 
-bitCount ← 30
-dim ← 1
-divisor ← 2*30
-
-
 contract ← 2
-num_mc_it ← 10⍝48576
+num_mc_it ← 1048576
 num_dates ← 5
 num_under ← 3
 num_models ← 1
@@ -43,16 +38,15 @@ bb_ind ← csv.read (path, 'bb_ind')
 sobolIndI ← {
   dirVec ← ⍵
   n ← ⍺
-  bitsNum ← 1↓⍴dirVec
+  bitsNum ← (⍴dirVec)[⍴⍴dirVec]
   bits  ← ⍳bitsNum
-  is ← {⍵ testBit (grayCode n)} ¨ bits
-  is2 ← dirVec × (⍴dirVec)⍴is
-  xor/is2
+  is ← n ∘.{⍵ testBit (grayCode ⍺)} bits
+  is xor.× ⍉dirVec 
 }
 
 sobolIndR ← {
   arri ← ⍺ sobolIndI ⍵
-  bitsNum ← 1↓⍴⍵
+  bitsNum ← (⍴⍵)[⍴⍴⍵]
   arri÷2*bitsNum
 }
 
@@ -185,12 +179,11 @@ compute ← {
   n ← ⍵
   payoffs ← 0
   
+  sobol_mat ← (⍳⍵) sobolIndR dirVec
+  gauss_mat ← ugaussian sobol_mat
+
   compute1 ← {
-    sobol_mat ← ⍵ sobolIndR dirVec
-    gauss_mat ← ugaussian sobol_mat
-
-    bb_mat ← brownianBridge (num_under num_dates bb_ind bb_data gauss_mat)
-
+    bb_mat ← brownianBridge (num_under num_dates bb_ind bb_data (gauss_mat[⍵;]))
     bs_mat ← blackScholes (num_under md_c md_vols md_drifts md_starts bb_mat)
 
     md_disc payoff2 bs_mat
