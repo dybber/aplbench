@@ -2,7 +2,6 @@ path ← '../data/medium/'
 dirVec    ← 15 30 ⍴ ReadCSVInt (path ,'direction_vectors')
 bb_data   ← 3 5   ⍴ ReadCSVDouble (path, 'bb_data')
 bb_ind    ← 3 5   ⍴ ReadCSVInt (path, 'bb_ind')
-
 md_c      ← 3 3   ⍴ ReadCSVDouble (path, 'md_c')
 md_starts ← 3     ⍴ ReadCSVDouble (path, 'md_starts')
 md_vols   ← 5 3   ⍴ ReadCSVDouble (path, 'md_vols')
@@ -83,11 +82,7 @@ ugaussianEl ← {
 ugaussian ← { ugaussianEl ¨ ⍵ }
 
 brownianBridge ← {
-  num_under ← ⍵[1]
-  num_dates ← ⍵[2]
-  bb_ind ← ⍵[3]
-  bb_data ← ⍵[4]
-  gauss ← ⍵[5]
+  gauss ← ⍵
 
   bb_bi ← bb_ind[1;]
   bb_li ← bb_ind[2;]
@@ -130,31 +125,20 @@ correlateDeltas ← {
 }
 
 combineVs ← {
-  n_row ← ⍵[1]
-  vol_row ← ⍵[2]
-  dr_row ← ⍵[3]
-  dr_row + n_row × vol_row
+  md_drifts + ⍵ × md_vols
 }
 
 mkPrices ← {
-  md_starts ← ⍵[1]
-  md_vols ← ⍵[2]
-  md_drifts ← ⍵[3]
-  noises ← ⍵[4]
-  e_rows ← *combineVs noises md_vols md_drifts
+  noises ← ⍵
+  e_rows ← *combineVs noises
 
   1↓⍉×\md_starts , ⍉ e_rows
 }
 
 blackScholes ← {
-  num_under ← ⍵[1]
-  md_c ← ⍵[2]
-  md_vols ← ⍵[3]
-  md_drifts ← ⍵[4]
-  md_starts ← ⍵[5]
-  bb_arr ← ⍵[6]
+  bb_arr ← ⍵
   noises ← md_c correlateDeltas bb_arr
-  mkPrices (md_starts md_vols md_drifts noises)
+  mkPrices noises
 }
 
 payoff2 ← {
@@ -177,8 +161,8 @@ compute ← {
   gauss_mat ← ugaussian sobol_mat
 
   compute1 ← {
-    bb_mat ← brownianBridge (num_under num_dates bb_ind bb_data (gauss_mat[⍵;]))
-    bs_mat ← blackScholes (num_under md_c md_vols md_drifts md_starts bb_mat)
+    bb_mat ← brownianBridge gauss_mat[⍵;]
+    bs_mat ← blackScholes bb_mat
 
     md_disc payoff2 bs_mat
   }
