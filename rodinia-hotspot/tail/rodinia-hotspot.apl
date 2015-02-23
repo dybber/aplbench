@@ -33,12 +33,12 @@ hotspot ← {
 
   iter ← {
     temp ← ⍵
-    m1 ← (1↓⍉temp),0
-    m2 ← 0,¯1↓⍉temp
+    m1 ← (1↓⍉temp),row⍴0
+    m2 ← (row⍴0),¯1↓⍉temp
     x ← (m1 + m2) - c1 × temp
 
-    n1 ← ⍉(⍉1↓temp),0
-    n2 ← ⍉0,⍉¯1↓temp
+    n1 ← ⍉(⍉1↓temp),col⍴0
+    n2 ← ⍉(col⍴0),⍉¯1↓temp
     y ← (n1 + n2) - c2 × temp
 
     delta ← (step ÷ Cap) × (power + (y ÷ Ry) + (x ÷ Rx) + (amb_temp - temp) ÷ Rz)
