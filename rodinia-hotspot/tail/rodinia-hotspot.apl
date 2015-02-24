@@ -16,8 +16,8 @@ hotspot ← {
   MAX_PD ← 3000000
 
   ⍝ Additional scalar values (compute on CPU)
-  row ← 1↑⍴temp
-  col ← ¯1↑⍴temp
+  row ← ⊃1↑⍴temp
+  col ← ⊃¯1↑⍴temp
   gh ← height ÷ row
   gw ← width ÷ col
   Cap ← FACTOR_CHIP × SPEC_HEAT_SI × t_chip × gw × gh
@@ -33,8 +33,8 @@ hotspot ← {
 
   iter ← {
     temp ← ⍵
-    m1 ← (1↓⍉temp),row⍴0
-    m2 ← (row⍴0),¯1↓⍉temp
+    m1 ← (⍉1↓⍉temp),row 1⍴0
+    m2 ← (row 1⍴0),⍉¯1↓⍉temp
     x ← (m1 + m2) - c1 × temp
 
     n1 ← ⍉(⍉1↓temp),col⍴0
@@ -48,12 +48,12 @@ hotspot ← {
   (iter ⍣ num_iterations) temp
 }
 
-⍝ ⍝ data files
-⍝ temp ← 512 512 ⍴ ⎕ReadDoubleVecFile '../data/temp_512'
-⍝ power ← 512 512 ⍴ ⎕ReadDoubleVecFile '../data/power_512'
+⍝ data files
+temp ← 512 512 ⍴ ⎕ReadDoubleVecFile '../data/temp_512'
+power ← 512 512 ⍴ ⎕ReadDoubleVecFile '../data/power_512'
 
-temp ← 64 64 ⍴ ⎕ReadDoubleVecFile '../data/temp_64'
-power ← 64 64 ⍴ ⎕ReadDoubleVecFile '../data/power_64'
+⍝ temp ← 64 64 ⍴ ⎕ReadDoubleVecFile '../data/temp_64'
+⍝ power ← 64 64 ⍴ ⎕ReadDoubleVecFile '../data/power_64'
 
 r ← temp hotspot power
 +/+/r
