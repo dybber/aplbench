@@ -64,4 +64,4 @@ r ← temp hotspot power
 ⍝ Summing the terms is not really part of the benchmark
 ⍝ and doesn't really make sense. 
 ⍝ I just added it to output a single number instead of a matrix
-+/+/r
+⌈/⌈/r

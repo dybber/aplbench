@@ -49,12 +49,16 @@ hotspot ← {
 }
 
 ⍝ data files
-temp ← 512 512 ⍴ ⎕ReadDoubleVecFile '../data/temp_512'
-power ← 512 512 ⍴ ⎕ReadDoubleVecFile '../data/power_512'
+temp ← 512 512 ⍴ ReadCSVDouble '../data/temp_512'
+power ← 512 512 ⍴ ReadCSVDouble '../data/power_512'
 
-⍝ temp ← 64 64 ⍴ ⎕ReadDoubleVecFile '../data/temp_64'
-⍝ power ← 64 64 ⍴ ⎕ReadDoubleVecFile '../data/power_64'
+⍝ temp ← 64 64 ⍴ ReadCSVDouble '../data/temp_64'
+⍝ power ← 64 64 ⍴ ReadCSVDouble '../data/power_64'
 
+t1 ← now 0
 r ← temp hotspot power
-+/+/r
-
+a ← ⌈/⌈/r
+t2 ← now 0
+⎕ ← 'TIMING:'
+⎕ ← t2 - t1
+⎕ ← a
