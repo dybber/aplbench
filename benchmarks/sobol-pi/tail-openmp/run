@@ -1,0 +1,8 @@
+#!/bin/sh
+if [ -z "$1" ]; then
+  ./sobol-pi-openmp # Run with default number of threads
+else
+  OMP_NUM_THREADS=$1 ./sobol-pi-openmp
+fi
+
+

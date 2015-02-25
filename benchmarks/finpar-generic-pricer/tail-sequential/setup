@@ -1,0 +1,2 @@
+#!/bin/sh
+gcc -I "../../../shared/tail" -O2 -std=c99 pricer-sequential.c -lm -o run

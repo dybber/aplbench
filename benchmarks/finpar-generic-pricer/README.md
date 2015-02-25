@@ -1,17 +1,17 @@
-pricer.apl
+tail-sequential/pricer.apl
 ----------
 Functional-style APL implementation of Generic Pricer from finpar
 benchmark suite
 
-pricer-sequential.c
--------------------
+tail-sequential
+---------------
 Code generated w. TAIL, modified slightly:
 
- * Removed conditionals
+ * Removed bounds checks
  * Hoisted malloc outside loop
  * Added free's
 
-pricer-openmp.c
+tail-openmp
 ---------------
 Builds on pricer.sequential.c
 

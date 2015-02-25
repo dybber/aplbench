@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include <omp.h>
-#include "include/apl.h"
+#include <apl.h>
 double kernel(int n595) {
   char a1[] = {'.', '.', '/', 'd', 'a', 't', 'a', '/', 'm', 'e', 'd', 'i', 'u', 'm', '/', 'd', 'i', 'r', 'e', 'c', 't', 'i', 'o', 'n', '_', 'v', 'e', 'c', 't', 'o', 'r', 's'};
   char* a2 = (char*)malloc(sizeof(char)*33);
@@ -79,25 +78,9 @@ double kernel(int n595) {
   int n67 = a65[0];
   int n72 = now(0);
   double d133 = 0.0;
-
-  /* const int nprocs = omp_get_num_procs(); */
-  const int nthreads = omp_get_max_threads();
-  /* printf("Processors: %d\n", nprocs); */
-  /* printf("Threads: %d\n", nthreads); */
-  //printf("Allocating 2 * %d * %lu bytes\n", nprocs, sizeof(double)*18);
-  double* a162_all = (double*)malloc(nthreads*sizeof(double)*64);
-  double* a396_all = (double*)malloc(nthreads*sizeof(double)*64);
-  double* a561_all = (double*)malloc(nthreads*sizeof(double)*64);
-
-  #pragma omp parallel
-  {
-    unsigned int th_id = omp_get_thread_num();
-    double* a162 = a162_all + th_id*64;
-    double* a396 = a396_all + th_id*64;
-    double* a561 = a561_all + th_id*64;
-
-  #pragma omp for reduction(+ : d133)
-
+  double* a162 = (double*)malloc(sizeof(double)*18);
+  double* a396 = (double*)malloc(sizeof(double)*18);
+  double* a561 = (double*)malloc(sizeof(double)*7);
   for (int n134 = 0; n134 < 1048576; n134++) {
     int n141 = n134*15;
     for (int n164 = 0; n164 < 18; n164++) {
@@ -435,10 +418,9 @@ double kernel(int n595) {
     }
     d133 = d133+a561[0];
   }
-  }
-  free(a162_all);
-  free(a396_all);
-  free(a561_all);
+  free(a162);
+  free(a396);
+  free(a561);
   double d582 = d133/1048576.0;
   int n583 = now(1);
   char a584[] = {'R', 'E', 'S', 'U', 'L', 'T', ':', ' '};

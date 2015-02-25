@@ -1,0 +1,87 @@
+#!/bin/bash
+
+SCRIPTFILE=`readlink -f $0`
+ROOT=`dirname $SCRIPTFILE`
+
+# When was this set of benchmarks initiated
+LOGTAG=$(date +%Y-%m-%d-%H-%M-%S)
+BENCHROOT=$ROOT/benchmarks
+LOGDIR=$ROOT/logs/$LOGTAG
+
+# How many times each benchmark should be executed
+RUNS=3
+
+# Run a single benchmark and store the logs
+benchmark() {
+  experiment=$1
+  instance=$2
+  tag=$3
+  input=$4
+
+  if [ -z $4 ]; then
+    columnname="$instance"
+  else
+    columnname="$instance-$input"
+  fi
+
+  echo $tag/$columnname
+  BENCHDIR=$BENCHROOT/$1/$2
+  mkdir -p $LOGDIR
+  echo $columnname > $LOGDIR/$experiment-$columnname
+  for i in `seq 1 $RUNS`
+  do
+      if [ -z $4 ]; then
+          # Run without any command line inputs
+          $BENCHDIR/run | grep TIMING | cut -c 9- >> $LOGDIR/$experiment-$columnname
+      else
+          $BENCHDIR/run $4 | grep TIMING | cut -c 9- >> $LOGDIR/$experiment-$columnname
+      fi      
+  done
+
+  if [ -f "$LOGDIR/$experiment.csv" ]; then
+      paste -d, $LOGDIR/$experiment.csv $LOGDIR/$experiment-$columnname > $LOGDIR/tmp
+      mv $LOGDIR/tmp $LOGDIR/$experiment.csv
+  else
+      cp $LOGDIR/$experiment-$columnname $LOGDIR/$experiment.csv
+  fi
+}
+
+# Go through all enabled benchmarks and run them
+benchmarkall() {
+  for experiment in $BENCHROOT/*
+  do
+    if [ ! -d "$experiment" ]; then
+      continue
+    fi
+    if [ -f "$experiment/disable" ]; then
+      continue
+    fi
+    for instance in $experiment/*
+    do
+      if [ ! -d "$instance" ]; then
+        continue
+      fi
+      if [ "$(basename "$instance")" = "data" ]; then
+        continue
+      fi
+      if [ -f "$instance/disable" ]; then
+          continue
+      fi
+
+      pushd $instance > /dev/null
+      $instance/setup
+      if [ -f "$instance/inputs" ]; then
+          #Run with each of the different inputs
+          inputs="$(< $instance/inputs)"
+          for x in $inputs; do
+            benchmark "$(basename "$experiment")" "$(basename "$instance")" $LOGTAG $x
+          done
+      else
+          benchmark "$(basename "$experiment")" "$(basename "$instance")" $LOGTAG
+      fi
+      popd > /dev/null
+    done
+  done
+}
+
+benchmarkall

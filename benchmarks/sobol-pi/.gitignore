@@ -1,0 +1,3 @@
+tail-sequential/run
+tail-openmp/sobol-pi-openmp
+dyalog/run.apl

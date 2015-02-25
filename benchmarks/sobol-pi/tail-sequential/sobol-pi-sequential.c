@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include "include/apl.h"
+#include <apl.h>
 double kernel(int n149) {
   char a1[] = {'.', '.', '/', 'd', 'a', 't', 'a', '/', 'd', 'i', 'r', 'e', 'c', 't', 'i', 'o', 'n', '_', 'v', 'e', 'c', 't', 'o', 'r', 's'};
   char* a2 = (char*)malloc(sizeof(char)*26);
@@ -15,9 +15,6 @@ double kernel(int n149) {
   int n7 = a5[0];
   int n71 = now(0);
   int n76 = 0;
-  #pragma omp parallel reduction(+ : n76)
-  {
-  #pragma omp for
   for (int n77 = 0; n77 < 10000000; n77++) {
     double d78 = 0.0;
     for (int n79 = 0; n79 < 2; n79++) {
@@ -68,7 +65,6 @@ double kernel(int n149) {
       d78 = d78+pow((i2d(n80)/pow(2.0,30.0)),2.0);
     }
     n76 = n76+b2i(!(1.0<=pow(d78,0.5)));
-  }
   }
   double d121 = 4.0*(i2d(n76)/1e7);
   int n122 = now(1);

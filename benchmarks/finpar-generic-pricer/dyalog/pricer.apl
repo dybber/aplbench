@@ -1,21 +1,14 @@
-#!/usr/bin/env rundyalog
+path ← '../data/medium/'
+dirVec    ← 15 30 ⍴ ReadCSVInt (path ,'direction_vectors')
+bb_data   ← 3 5   ⍴ ReadCSVDouble (path, 'bb_data')
+bb_ind    ← 3 5   ⍴ ReadCSVInt (path, 'bb_ind')
 
-⍝ Make sure we are 1-indexing
-⎕IO ← 1
+md_c      ← 3 3   ⍴ ReadCSVDouble (path, 'md_c')
+md_starts ← 3     ⍴ ReadCSVDouble (path, 'md_starts')
+md_vols   ← 5 3   ⍴ ReadCSVDouble (path, 'md_vols')
+md_drifts ← 5 3   ⍴ ReadCSVDouble (path, 'md_drifts')
 
-csv←import'../../shared/dyalog/csv.apl'
-
-w ← 32 ⍝ word size
-dec2bin ← {(w⍴2)⊤⍵}
-bin2dec ← {(w⍴2)⊥⍵}
-
-⍝ Bitwise operations
-sll ← {bin2dec (⍵↓dec2bin ⍺),⍵⍴0}
-srl ← {bin2dec (⍵⍴0),(-⍵)↓dec2bin ⍺}
-xor ← {bin2dec (dec2bin ⍺) ≠ dec2bin ⍵}
-testBit ← {(dec2bin ⍵)[w-⍺-1]} ⍝ Does not work for other than scalar arguments!
-
-grayCode ← { ⍵ xor ⍵ srl 1 }
+md_disc   ← 5     ⍴ ReadCSVDouble (path, 'md_disc')
 
 contract ← 2
 num_mc_it ← 1048576
@@ -24,15 +17,7 @@ num_under ← 3
 num_models ← 1
 num_bits ← 30
 
-path ← '../data/medium/'
-dirVec ← csv.read (path ,'direction_vectors')
-md_drifts ← csv.read (path, 'md_drifts')
-md_c ← csv.read (path, 'md_c')
-md_disc ← 5 ⍴ csv.read (path, 'md_disc')
-md_starts ← 3 ⍴ csv.read (path, 'md_starts')
-md_vols ← csv.read (path, 'md_vols')
-bb_data ← csv.read (path, 'bb_data')
-bb_ind ← csv.read (path, 'bb_ind')
+grayCode ← { ⍵ xor ⍵ srl 1 }
 
 ⍝ Sobol sequences using inductive approach
 sobolIndI ← {
