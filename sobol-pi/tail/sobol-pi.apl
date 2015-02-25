@@ -96,7 +96,7 @@ sobolIndR ← {
 }
 
 ⍝ Number of iterations
-n ← 10000
+n ← 10000000
 
 ⍝ Compute 2 dimensional sobol vector
 s ← (⍳n) sobolIndR 2 30⍴dirVec

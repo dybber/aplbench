@@ -10,7 +10,7 @@ md_drifts ← 5 3   ⍴ ReadCSVDouble (path, 'md_drifts')
 md_disc   ← 5     ⍴ ReadCSVDouble (path, 'md_disc')
 
 contract ← 2
-num_mc_it ← 10 ⍝ 48576
+num_mc_it ← 1048576
 num_dates ← 5
 num_under ← 3
 num_models ← 1
@@ -170,4 +170,9 @@ compute ← {
   (+/compute1¨⍳n)÷n
 }
 
-compute num_mc_it
+t0 ← now 0
+result ← compute num_mc_it
+t1 ← now 1
+⎕ ← 'RESULT: ' , ⍕ result
+⎕ ← 'TIMING: ' , ⍕ (t1-t0)
+1.0
