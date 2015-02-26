@@ -1,5 +1,5 @@
 #!/bin/sh
 
 . ../../../config
-$APLTAIL/aplt -unsafe -comments -c -O 2 -oc pricer-sequential.c $APLTAIL/lib/prelude.apl pricer.apl
+$APLTAIL/aplt -unsafe -c -O 2 -oc pricer-sequential.c $APLTAIL/lib/prelude.apl pricer.apl
 gcc -I "$APLTAIL/include/" -O3 -std=c99 pricer-sequential.c -lm -o run

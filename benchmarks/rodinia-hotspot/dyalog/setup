@@ -1,2 +1,2 @@
 #!/bin/sh
-cat ../../../shared/dyalog/dyalog-prelude.apl hotspot.apl > run.apl
+cat ../../../shared/dyalog/dyalog-prelude.apl ../tail/hotspot.apl > run.apl

@@ -1,0 +1,3 @@
+#!/bin/sh
+export MAXWS=2G
+rundyalog run.apl

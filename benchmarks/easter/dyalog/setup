@@ -1,0 +1,2 @@
+#!/bin/sh
+cat ../../../shared/dyalog/dyalog-prelude.apl ../tail/easter.apl > run.apl

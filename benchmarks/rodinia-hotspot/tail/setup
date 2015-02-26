@@ -1,5 +1,5 @@
 #!/bin/sh
 
 . ../../../config
-$APLTAIL/aplt -unsafe -comments -c -O 2 -oc hotspot.c $APLTAIL/lib/prelude.apl hotspot.apl
+$APLTAIL/aplt -unsafe -c -O 2 -oc hotspot.c $APLTAIL/lib/prelude.apl hotspot.apl
 gcc -I "$APLTAIL/include/" -O3 -std=c99 hotspot.c -lm -o run

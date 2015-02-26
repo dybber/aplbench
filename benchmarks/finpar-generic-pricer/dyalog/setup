@@ -1,2 +1,2 @@
 #!/bin/sh
-cat ../../../shared/dyalog/dyalog-prelude.apl pricer.apl > run.apl
+cat ../../../shared/dyalog/dyalog-prelude.apl ../tail/pricer.apl > run.apl
