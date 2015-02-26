@@ -1,20 +1,20 @@
 path ← '../data/medium/'
-dirVec    ← 15 30 ⍴ ReadCSVInt (path ,'direction_vectors')
-bb_data   ← 3 5   ⍴ ReadCSVDouble (path, 'bb_data')
+dirVec    ← ⌷15 30 ⍴ ReadCSVInt (path ,'direction_vectors')
+bb_data   ← ⌷3 5   ⍴ ReadCSVDouble (path, 'bb_data')
 bb_ind    ← 3 5   ⍴ ReadCSVInt (path, 'bb_ind')
-md_c      ← 3 3   ⍴ ReadCSVDouble (path, 'md_c')
-md_starts ← 3     ⍴ ReadCSVDouble (path, 'md_starts')
-md_vols   ← 5 3   ⍴ ReadCSVDouble (path, 'md_vols')
-md_drifts ← 5 3   ⍴ ReadCSVDouble (path, 'md_drifts')
+md_c      ← ⌷3 3   ⍴ ReadCSVDouble (path, 'md_c')
+md_starts ← ⌷3     ⍴ ReadCSVDouble (path, 'md_starts')
+md_vols   ← ⌷5 3   ⍴ ReadCSVDouble (path, 'md_vols')
+md_drifts ← ⌷5 3   ⍴ ReadCSVDouble (path, 'md_drifts')
 
-md_disc   ← 5     ⍴ ReadCSVDouble (path, 'md_disc')
+md_disc   ← ⌷5     ⍴ ReadCSVDouble (path, 'md_disc')
 
-bb_bi ← bb_ind[1;]
-bb_li ← bb_ind[2;]
-bb_ri ← bb_ind[3;]
-bb_sd ← bb_data[1;]
-bb_lw ← bb_data[2;]
-bb_rw ← bb_data[3;]
+bb_bi ← ⌷bb_ind[1;]
+bb_li ← ⌷bb_ind[2;]
+bb_ri ← ⌷bb_ind[3;]
+bb_sd ← ⌷bb_data[1;]
+bb_lw ← ⌷bb_data[2;]
+bb_rw ← ⌷bb_data[3;]
 
 
 contract ← 2
@@ -32,8 +32,8 @@ sobolIndI ← {
   n ← ⍺
   bitsNum ← (⍴dirVec)[⊃⍴⍴dirVec]
   bits  ← ⍳bitsNum
-  is ← n ∘.{⍵ testBit (grayCode ⍺)} bits
-  is xor.× ⍉dirVec
+  is ← ⌷n ∘.{⍵ testBit (grayCode ⍺)} bits
+  is xor.× ⌷⍉dirVec
 }
 
 sobolIndR ← {
@@ -144,7 +144,7 @@ blackScholes ← {
 payoff2 ← {
   md_disc ← ⍺
   xss ← ⍵
-  mins ← ⌊/xss × (⍴xss)⍴ ÷ 3758.05 11840.0 1200.0
+  mins ← ⌷⌊/xss × (⍴xss)⍴ ÷ 3758.05 11840.0 1200.0
 
   (mins[1] ≥ 1) { ⍵ ⋄ 1150.0 × md_disc[1]} else {
     ⍵ ⋄ (mins[2] ≥ 1) { ⍵ ⋄ 1300.0 × md_disc[2]} else {
