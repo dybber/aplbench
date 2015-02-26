@@ -1,1 +1,11 @@
-./hotspot 512 512 2 4 ../data/temp_512 ../data/power_512 
+#!/bin/sh
+if [ -z "$1" ]; then
+  # Run with default number of threads of 4
+  ./hotspot 512 512 360 4 ../data/temp_512 ../data/power_512 
+else
+  export OMP_NUM_THREADS=$1
+  ./hotspot 512 512 360 $1 ../data/temp_512 ../data/power_512 
+fi
+
+
+

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+. ../../../config
+$APLTAIL/aplt -c -O 2 -oc life2.c $APLTAIL/lib/prelude.apl life2.apl
+gcc -I "$APLTAIL/include/" -O3 -std=c99 life2.c -lm -o run

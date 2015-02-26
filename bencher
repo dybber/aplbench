@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source config
+
 SCRIPTFILE=`readlink -f $0`
 ROOT=`dirname $SCRIPTFILE`
 
@@ -7,9 +9,6 @@ ROOT=`dirname $SCRIPTFILE`
 LOGTAG=$(date +%Y-%m-%d-%H-%M-%S)
 BENCHROOT=$ROOT/benchmarks
 LOGDIR=$ROOT/logs/$LOGTAG
-
-# How many times each benchmark should be executed
-RUNS=3
 
 # Run a single benchmark and store the logs
 benchmark() {

@@ -1,6 +1,6 @@
 ⍝ Ported to APL from the ELI version available at http://fastarray.appspot.com/
 
-num_iterations ← 2 ⍝ number of iteration
+num_iterations ← 360 ⍝ number of iteration
 
 hotspot ← {
   temp ← ⍺
@@ -52,13 +52,9 @@ hotspot ← {
 temp ← 512 512 ⍴ ReadCSVDouble '../data/temp_512'
 power ← 512 512 ⍴ ReadCSVDouble '../data/power_512'
 
-⍝ temp ← 64 64 ⍴ ReadCSVDouble '../data/temp_64'
-⍝ power ← 64 64 ⍴ ReadCSVDouble '../data/power_64'
-
-t1 ← now 0
+t0 ← now 0
 r ← temp hotspot power
-a ← ⌈/⌈/r
-t2 ← now 0
-⎕ ← 'TIMING:'
-⎕ ← t2 - t1
-⎕ ← a
+t1 ← now 1
+⎕ ← 'RESULT: ' , ⍕ ⌈/⌈/r
+⎕ ← 'TIMING: ' , ⍕ (t1-t0)
+1.0

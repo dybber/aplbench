@@ -1,12 +1,6 @@
-#!/usr/bin/env rundyalog
 ⍝ Ported to APL from the ELI version available at http://fastarray.appspot.com/
 
-⍝ Make sure we are 1-indexing
-⎕IO ← 1
-
-csv←import'../../shared/dyalog/csv.apl'
-
-num_iterations ← 2 ⍝ number of iteration
+num_iterations ← 360 ⍝ number of iteration
 
 hotspot ← {
   temp ← ⍺
@@ -56,12 +50,12 @@ hotspot ← {
 path ← '../data/'
 size ← 512 512
 
-temp ← size ⍴ csv.read (path, 'temp_512')
-power ← size ⍴ csv.read (path, 'power_512')
+temp ← size ⍴ ReadCSVDouble (path, 'temp_512')
+power ← size ⍴ ReadCSVDouble (path, 'power_512')
 
+t0 ← now 0
 r ← temp hotspot power
-
-⍝ Summing the terms is not really part of the benchmark
-⍝ and doesn't really make sense. 
-⍝ I just added it to output a single number instead of a matrix
-⌈/⌈/r
+t1 ← now 1
+⎕ ← 'RESULT: ' , ⍕ ⌈/⌈/r
+⎕ ← 'TIMING: ' , ⍕ (t1-t0)
+1.0

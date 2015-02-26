@@ -1,2 +1,5 @@
 #!/bin/sh
-gcc -I "../../../shared/tail" -fopenmp -O2 -std=c99 pricer-openmp.c -lm -o pricer-openmp
+
+. ../../../config
+
+gcc -I "$APLTAIL/include" -fopenmp -O2 -std=c99 pricer-openmp.c -lm -o pricer-openmp

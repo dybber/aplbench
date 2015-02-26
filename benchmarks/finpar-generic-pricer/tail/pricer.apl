@@ -9,6 +9,14 @@ md_drifts ← 5 3   ⍴ ReadCSVDouble (path, 'md_drifts')
 
 md_disc   ← 5     ⍴ ReadCSVDouble (path, 'md_disc')
 
+bb_bi ← bb_ind[1;]
+bb_li ← bb_ind[2;]
+bb_ri ← bb_ind[3;]
+bb_sd ← bb_data[1;]
+bb_lw ← bb_data[2;]
+bb_rw ← bb_data[3;]
+
+
 contract ← 2
 num_mc_it ← 1048576
 num_dates ← 5
@@ -63,20 +71,18 @@ tail ← {
   (x appr tail_as) ÷ (x appr tail_bs)
 }
 
+else ← {(⍺⍺⍣⍺)(⍵⍵⍣(~⍺))⍵}
+
 ugaussianEl ← {
    dp ← ⍵ - 0.5
 
-  ⍝ case 1
-   R1 ← smallcase dp
-   
-  ⍝ case 2  
-   pp ← 0.5 + dp×-×dp
-   r ← (-⍟pp)*0.5
-   x ← ((intermediate r) × r≤5.0) + (tail r) × r>5.0
-   R2 ← x × ×dp
+   case2 ← { pp ← 0.5 + ⍵×-×⍵
+              r ← (-⍟pp)*0.5
+              x ← ((intermediate r) × r≤5.0) + (tail r) × r>5.0
+              x × ×⍵
+            }
 
-  ⍝ conditional  
-  (R2 × (1 - 0.425≥|dp)) + R1 × (0.425≥|dp)
+   (0.425≥|dp) smallcase else case2 ⊃dp
 }
 
 ugaussian ← { ugaussianEl ¨ ⍵ }
@@ -84,12 +90,6 @@ ugaussian ← { ugaussianEl ¨ ⍵ }
 brownianBridge ← {
   gauss ← ⍵
 
-  bb_bi ← bb_ind[1;]
-  bb_li ← bb_ind[2;]
-  bb_ri ← bb_ind[3;]
-  bb_sd ← bb_data[1;]
-  bb_lw ← bb_data[2;]
-  bb_rw ← bb_data[3;]
   gauss2Dt ← (num_dates num_under)⍴gauss
   sz ← (⍉(num_under num_dates)⍴bb_sd) × gauss2Dt
   bbrow ← ((num_dates+1) num_under)⍴0.0
@@ -146,11 +146,25 @@ payoff2 ← {
   xss ← ⍵
   mins ← ⌊/xss × (⍴xss)⍴ ÷ 3758.05 11840.0 1200.0
 
-  bools ← (mins ≥ 1), (mins[5] ≥ 0.75), 1
-  X ← 1000.0 × md_disc[5]
-  results ← (md_disc × 1000 + 150 × ⍳5), X, mins[5] × X
+  (mins[1] ≥ 1) { ⍵ ⋄ 1150.0 × md_disc[1]} else {
+    ⍵ ⋄ (mins[2] ≥ 1) { ⍵ ⋄ 1300.0 × md_disc[2]} else {
+      ⍵ ⋄ (mins[3] ≥ 1) { ⍵ ⋄ 1450.0 × md_disc[3]} else {
+        ⍵ ⋄ (mins[4] ≥ 1) { ⍵ ⋄ 1600.0 × md_disc[4]} else {
+          ⍵ ⋄ (mins[5] ≥ 1) { ⍵ ⋄ 1750.0 × md_disc[5]} else {
+            ⍵ ⋄ (mins[5] ≥ 0.75) { ⍵ ⋄ 1000.0 × md_disc[5]} else {
+              ⍵ ⋄ mins[5] × 1000.0 × md_disc[5]
+            } 0
+          } 0
+        } 0
+      } 0
+    } 0
+  } 0
 
-  (bools/results)[1]
+  ⍝ bools ← (mins ≥ 1), (mins[5] ≥ 0.75), 1
+  ⍝ X ← 1000.0 × md_disc[5]
+  ⍝ results ← (md_disc × 1000 + 150 × ⍳5), X, mins[5] × X
+
+  ⍝ (bools/results)[1]
 }
 
 compute ← {

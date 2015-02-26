@@ -198,11 +198,24 @@ void usage(int argc, char **argv)
 	exit(1);
 }
 
+struct timeval tv_init;
+
+static int now (int x) {
+  struct timeval tv_check;
+  gettimeofday(&tv_check, NULL);
+  long int usec = tv_check.tv_usec - tv_init.tv_usec;
+  long int sec = tv_check.tv_sec - tv_init.tv_sec;
+  long int msec = usec / 1000;
+  return (int)(sec*1000+msec);
+}
+
 int main(int argc, char **argv)
 {
 	int grid_rows, grid_cols, sim_time, i;
 	double *temp, *power, *result;
 	char *tfile, *pfile;
+
+  gettimeofday(&tv_init, NULL);
 	
 	/* check validity of inputs	*/
 	if (argc != 7)
@@ -228,8 +241,11 @@ int main(int argc, char **argv)
 	read_input(power, grid_rows, grid_cols, pfile);
 
 	printf("Start computing the transient temperature\n");
+  int t0 = now(0);
 	compute_tran_temp(result,sim_time, temp, power, grid_rows, grid_cols);
+  int t1 = now(1);
 	printf("Ending simulation\n");
+  printf("TIMING: %d\n", t1-t0);
 	/* output results	*/
 #ifdef VERBOSE
 	fprintf(stdout, "Final Temperatures:\n");

@@ -1,0 +1,5 @@
+# Location of the local apltail installation
+APLTAIL=/home/dybber/Documents/research/tail/apltail
+
+# How many times each benchmark should be executed
+RUNS=1

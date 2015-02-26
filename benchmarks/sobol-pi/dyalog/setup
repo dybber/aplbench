@@ -1,2 +1,2 @@
 #!/bin/sh
-cat ../../../shared/dyalog/dyalog-prelude.apl sobol-pi.apl > run.apl
+cat ../../../shared/dyalog/dyalog-prelude.apl ../tail/sobol-pi.apl > run.apl
