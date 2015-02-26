@@ -16,14 +16,13 @@ life ← {
 glider ← 3 3⍴1 1 1 1 0 0 0 1 0
 
 board ← ⍉ ¯10 ↑ ⍉ ¯10 ↑ glider
-
 square ← { x ← (5 ⊖ ⍵), 3 ⌽ ⍉ ⍵ ⋄ x ⍪ 4 ⊖ x }
 
 board ← square board
-board ← square board
+board ← ⌷square board
 
 t0 ← now 0
-a ← (life ⍣ 2000000) board
+a ← (life ⍣ 20000) board
 t1 ← now 1
 ⎕ ← 'RESULT: '
 ⎕ ← a

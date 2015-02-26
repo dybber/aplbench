@@ -18,7 +18,7 @@ sobolIndR ← {
 }
 
 ⍝ Number of iterations
-n ← 100000
+n ← 10000
 
 ⍝ Compute pi
 t0 ← now 0
