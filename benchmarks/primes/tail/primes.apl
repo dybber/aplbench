@@ -4,6 +4,6 @@ primes ← (1=+⌿0=A∘.|A)/A
 
 a← ⌈/ primes
 t1 ← now 1
-⎕ ← 'RESULT: ' , a
+⎕ ← 'RESULT: ' , ⍕ a
 ⎕ ← 'TIMING: ' , ⍕ (t1-t0)
 1.0

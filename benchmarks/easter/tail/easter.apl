@@ -22,6 +22,6 @@ run ← {
 t0 ← now 0
 a←⌊/run ¨ ⍳ 400
 t1 ← now 1
-⎕ ← 'RESULT: ' , a
+⎕ ← 'RESULT: ' , ⍕ a
 ⎕ ← 'TIMING: ' , ⍕ (t1-t0)
 1.0

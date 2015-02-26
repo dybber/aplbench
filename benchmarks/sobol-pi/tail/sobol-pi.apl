@@ -18,16 +18,16 @@ sobolIndR ← {
 }
 
 ⍝ Number of iterations
-n ← 1000000
-
-⍝ Compute 2 dimensional sobol vector
-s ← (⍳n) sobolIndR dirVec
+n ← 100000
 
 ⍝ Compute pi
 t0 ← now 0
+
+⍝ Compute 2 dimensional sobol vector
+s ← (⍳n) sobolIndR 2 30⍴dirVec
 pi ← 4×(+/1>(+/s*2)*÷2)÷n
+
 t1 ← now 1
 ⎕ ← 'RESULT: ' , ⍕ pi
 ⎕ ← 'TIMING: ' , ⍕ (t1-t0)
 1.0
-
