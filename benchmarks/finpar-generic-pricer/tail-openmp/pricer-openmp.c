@@ -4,7 +4,7 @@
 #include <string.h>
 #include <omp.h>
 #include <apl.h>
-double kernel(int n595) {
+double kernel(int n515) {
   char a1[] = {'.', '.', '/', 'd', 'a', 't', 'a', '/', 'm', 'e', 'd', 'i', 'u', 'm', '/', 'd', 'i', 'r', 'e', 'c', 't', 'i', 'o', 'n', '_', 'v', 'e', 'c', 't', 'o', 'r', 's'};
   char* a2 = (char*)malloc(sizeof(char)*33);
   for (int n4 = 0; n4 < 32; n4++) {
@@ -14,449 +14,514 @@ double kernel(int n595) {
   int* a5 = (int*)malloc(sizeof(int)*1);
   int* a6 = readIntVecFile(a2,a5);
   int n7 = a5[0];
-  char a10[] = {'.', '.', '/', 'd', 'a', 't', 'a', '/', 'm', 'e', 'd', 'i', 'u', 'm', '/', 'b', 'b', '_', 'd', 'a', 't', 'a'};
-  char* a11 = (char*)malloc(sizeof(char)*23);
-  for (int n13 = 0; n13 < 22; n13++) {
-    a11[n13] = a10[n13];
+  int* a13 = (int*)malloc(sizeof(int)*450);
+  for (int n15 = 0; n15 < 450; n15++) {
+    int n572;
+    if (n7==0) {
+      n572 = 0;
+    } else {
+      int n571 = n15%n7;
+      n572 = a6[n571];
+    }
+    a13[n15] = n572;
   }
-  a11[22] = '\000';
-  int* a14 = (int*)malloc(sizeof(int)*1);
-  double* a15 = readDoubleVecFile(a11,a14);
-  int n16 = a14[0];
-  char a19[] = {'.', '.', '/', 'd', 'a', 't', 'a', '/', 'm', 'e', 'd', 'i', 'u', 'm', '/', 'b', 'b', '_', 'i', 'n', 'd'};
-  char* a20 = (char*)malloc(sizeof(char)*22);
-  for (int n22 = 0; n22 < 21; n22++) {
-    a20[n22] = a19[n22];
+  char a17[] = {'.', '.', '/', 'd', 'a', 't', 'a', '/', 'm', 'e', 'd', 'i', 'u', 'm', '/', 'b', 'b', '_', 'd', 'a', 't', 'a'};
+  char* a18 = (char*)malloc(sizeof(char)*23);
+  for (int n20 = 0; n20 < 22; n20++) {
+    a18[n20] = a17[n20];
   }
-  a20[21] = '\000';
-  int* a23 = (int*)malloc(sizeof(int)*1);
-  int* a24 = readIntVecFile(a20,a23);
-  int n25 = a23[0];
-  char a28[] = {'.', '.', '/', 'd', 'a', 't', 'a', '/', 'm', 'e', 'd', 'i', 'u', 'm', '/', 'm', 'd', '_', 'c'};
-  char* a29 = (char*)malloc(sizeof(char)*20);
-  for (int n31 = 0; n31 < 19; n31++) {
-    a29[n31] = a28[n31];
+  a18[22] = '\000';
+  int* a21 = (int*)malloc(sizeof(int)*1);
+  double* a22 = readDoubleVecFile(a18,a21);
+  int n23 = a21[0];
+  double* a29 = (double*)malloc(sizeof(double)*15);
+  for (int n31 = 0; n31 < 15; n31++) {
+    double d570;
+    if (n23==0) {
+      d570 = 0.0;
+    } else {
+      int n569 = n31%n23;
+      d570 = a22[n569];
+    }
+    a29[n31] = d570;
   }
-  a29[19] = '\000';
-  int* a32 = (int*)malloc(sizeof(int)*1);
-  double* a33 = readDoubleVecFile(a29,a32);
-  int n34 = a32[0];
-  char a36[] = {'.', '.', '/', 'd', 'a', 't', 'a', '/', 'm', 'e', 'd', 'i', 'u', 'm', '/', 'm', 'd', '_', 's', 't', 'a', 'r', 't', 's'};
-  char* a37 = (char*)malloc(sizeof(char)*25);
-  for (int n39 = 0; n39 < 24; n39++) {
-    a37[n39] = a36[n39];
+  char a33[] = {'.', '.', '/', 'd', 'a', 't', 'a', '/', 'm', 'e', 'd', 'i', 'u', 'm', '/', 'b', 'b', '_', 'i', 'n', 'd'};
+  char* a34 = (char*)malloc(sizeof(char)*22);
+  for (int n36 = 0; n36 < 21; n36++) {
+    a34[n36] = a33[n36];
   }
-  a37[24] = '\000';
-  int* a40 = (int*)malloc(sizeof(int)*1);
-  double* a41 = readDoubleVecFile(a37,a40);
-  int n42 = a40[0];
-  char a44[] = {'.', '.', '/', 'd', 'a', 't', 'a', '/', 'm', 'e', 'd', 'i', 'u', 'm', '/', 'm', 'd', '_', 'v', 'o', 'l', 's'};
-  char* a45 = (char*)malloc(sizeof(char)*23);
-  for (int n47 = 0; n47 < 22; n47++) {
-    a45[n47] = a44[n47];
+  a34[21] = '\000';
+  int* a37 = (int*)malloc(sizeof(int)*1);
+  int* a38 = readIntVecFile(a34,a37);
+  int n39 = a37[0];
+  char a42[] = {'.', '.', '/', 'd', 'a', 't', 'a', '/', 'm', 'e', 'd', 'i', 'u', 'm', '/', 'm', 'd', '_', 'c'};
+  char* a43 = (char*)malloc(sizeof(char)*20);
+  for (int n45 = 0; n45 < 19; n45++) {
+    a43[n45] = a42[n45];
   }
-  a45[22] = '\000';
-  int* a48 = (int*)malloc(sizeof(int)*1);
-  double* a49 = readDoubleVecFile(a45,a48);
-  int n50 = a48[0];
-  char a53[] = {'.', '.', '/', 'd', 'a', 't', 'a', '/', 'm', 'e', 'd', 'i', 'u', 'm', '/', 'm', 'd', '_', 'd', 'r', 'i', 'f', 't', 's'};
-  char* a54 = (char*)malloc(sizeof(char)*25);
-  for (int n56 = 0; n56 < 24; n56++) {
-    a54[n56] = a53[n56];
+  a43[19] = '\000';
+  int* a46 = (int*)malloc(sizeof(int)*1);
+  double* a47 = readDoubleVecFile(a43,a46);
+  int n48 = a46[0];
+  double* a54 = (double*)malloc(sizeof(double)*9);
+  for (int n56 = 0; n56 < 9; n56++) {
+    double d568;
+    if (n48==0) {
+      d568 = 0.0;
+    } else {
+      int n567 = n56%n48;
+      d568 = a47[n567];
+    }
+    a54[n56] = d568;
   }
-  a54[24] = '\000';
-  int* a57 = (int*)malloc(sizeof(int)*1);
-  double* a58 = readDoubleVecFile(a54,a57);
-  int n59 = a57[0];
-  char a61[] = {'.', '.', '/', 'd', 'a', 't', 'a', '/', 'm', 'e', 'd', 'i', 'u', 'm', '/', 'm', 'd', '_', 'd', 'i', 's', 'c'};
-  char* a62 = (char*)malloc(sizeof(char)*23);
-  for (int n64 = 0; n64 < 22; n64++) {
-    a62[n64] = a61[n64];
+  char a57[] = {'.', '.', '/', 'd', 'a', 't', 'a', '/', 'm', 'e', 'd', 'i', 'u', 'm', '/', 'm', 'd', '_', 's', 't', 'a', 'r', 't', 's'};
+  char* a58 = (char*)malloc(sizeof(char)*25);
+  for (int n60 = 0; n60 < 24; n60++) {
+    a58[n60] = a57[n60];
   }
-  a62[22] = '\000';
-  int* a65 = (int*)malloc(sizeof(int)*1);
-  double* a66 = readDoubleVecFile(a62,a65);
-  int n67 = a65[0];
-  int n72 = now(0);
-  double d133 = 0.0;
+  a58[24] = '\000';
+  int* a61 = (int*)malloc(sizeof(int)*1);
+  double* a62 = readDoubleVecFile(a58,a61);
+  int n63 = a61[0];
+  double* a67 = (double*)malloc(sizeof(double)*3);
+  for (int n69 = 0; n69 < 3; n69++) {
+    double d566;
+    if (n63==0) {
+      d566 = 0.0;
+    } else {
+      int n565 = n69%n63;
+      d566 = a62[n565];
+    }
+    a67[n69] = d566;
+  }
+  char a71[] = {'.', '.', '/', 'd', 'a', 't', 'a', '/', 'm', 'e', 'd', 'i', 'u', 'm', '/', 'm', 'd', '_', 'v', 'o', 'l', 's'};
+  char* a72 = (char*)malloc(sizeof(char)*23);
+  for (int n74 = 0; n74 < 22; n74++) {
+    a72[n74] = a71[n74];
+  }
+  a72[22] = '\000';
+  int* a75 = (int*)malloc(sizeof(int)*1);
+  double* a76 = readDoubleVecFile(a72,a75);
+  int n77 = a75[0];
+  double* a83 = (double*)malloc(sizeof(double)*15);
+  for (int n85 = 0; n85 < 15; n85++) {
+    double d564;
+    if (n77==0) {
+      d564 = 0.0;
+    } else {
+      int n563 = n85%n77;
+      d564 = a76[n563];
+    }
+    a83[n85] = d564;
+  }
+  char a87[] = {'.', '.', '/', 'd', 'a', 't', 'a', '/', 'm', 'e', 'd', 'i', 'u', 'm', '/', 'm', 'd', '_', 'd', 'r', 'i', 'f', 't', 's'};
+  char* a88 = (char*)malloc(sizeof(char)*25);
+  for (int n90 = 0; n90 < 24; n90++) {
+    a88[n90] = a87[n90];
+  }
+  a88[24] = '\000';
+  int* a91 = (int*)malloc(sizeof(int)*1);
+  double* a92 = readDoubleVecFile(a88,a91);
+  int n93 = a91[0];
+  double* a99 = (double*)malloc(sizeof(double)*15);
+  for (int n101 = 0; n101 < 15; n101++) {
+    double d562;
+    if (n93==0) {
+      d562 = 0.0;
+    } else {
+      int n561 = n101%n93;
+      d562 = a92[n561];
+    }
+    a99[n101] = d562;
+  }
+  char a102[] = {'.', '.', '/', 'd', 'a', 't', 'a', '/', 'm', 'e', 'd', 'i', 'u', 'm', '/', 'm', 'd', '_', 'd', 'i', 's', 'c'};
+  char* a103 = (char*)malloc(sizeof(char)*23);
+  for (int n105 = 0; n105 < 22; n105++) {
+    a103[n105] = a102[n105];
+  }
+  a103[22] = '\000';
+  int* a106 = (int*)malloc(sizeof(int)*1);
+  double* a107 = readDoubleVecFile(a103,a106);
+  int n108 = a106[0];
+  double* a112 = (double*)malloc(sizeof(double)*5);
+  for (int n114 = 0; n114 < 5; n114++) {
+    double d560;
+    if (n108==0) {
+      d560 = 0.0;
+    } else {
+      int n559 = n114%n108;
+      d560 = a107[n559];
+    }
+    a112[n114] = d560;
+  }
+  int* a124 = (int*)malloc(sizeof(int)*5);
+  for (int n126 = 0; n126 < 5; n126++) {
+    int n555 = n126/5;
+    int n556 = (n555*5)+n126;
+    int n558;
+    if (n39==0) {
+      n558 = 0;
+    } else {
+      int n557 = n556%n39;
+      n558 = a38[n557];
+    }
+    a124[n126] = n558;
+  }
+  int* a137 = (int*)malloc(sizeof(int)*5);
+  for (int n139 = 0; n139 < 5; n139++) {
+    int n548 = 5+n139;
+    int n549 = n548%5;
+    int n550 = n548/5;
+    int n551 = (n550*5)+n549;
+    int n553;
+    if (n39==0) {
+      n553 = 0;
+    } else {
+      int n552 = n551%n39;
+      n553 = a38[n552];
+    }
+    a137[n139] = n553;
+  }
+  int* a151 = (int*)malloc(sizeof(int)*5);
+  for (int n153 = 0; n153 < 5; n153++) {
+    int n542 = 10+n153;
+    int n543 = n542%5;
+    int n544 = n542/5;
+    int n545 = (n544*5)+n543;
+    int n547;
+    if (n39==0) {
+      n547 = 0;
+    } else {
+      int n546 = n545%n39;
+      n547 = a38[n546];
+    }
+    a151[n153] = n547;
+  }
+  double* a161 = (double*)malloc(sizeof(double)*5);
+  for (int n163 = 0; n163 < 5; n163++) {
+    int n540 = n163/5;
+    int n541 = (n540*5)+n163;
+    a161[n163] = a29[n541];
+  }
+  double* a172 = (double*)malloc(sizeof(double)*5);
+  for (int n174 = 0; n174 < 5; n174++) {
+    int n535 = 5+n174;
+    int n536 = n535%5;
+    int n537 = n535/5;
+    int n538 = (n537*5)+n536;
+    a172[n174] = a29[n538];
+  }
+  double* a184 = (double*)malloc(sizeof(double)*5);
+  for (int n186 = 0; n186 < 5; n186++) {
+    int n531 = 10+n186;
+    int n532 = n531%5;
+    int n533 = n531/5;
+    int n534 = (n533*5)+n532;
+    a184[n186] = a29[n534];
+  }
+  double* a197 = (double*)malloc(sizeof(double)*15);
+  for (int n199 = 0; n199 < 15; n199++) {
+    int n526 = n199%3;
+    int n527 = n199/3;
+    int n528 = (n526*5)+n527;
+    double d530;
+    int n529 = n528%5;
+    d530 = a161[n529];
+    a197[n199] = d530;
+  }
+  double* a221 = (double*)malloc(sizeof(double)*9);
+  for (int n223 = 0; n223 < 9; n223++) {
+    int n516 = n223%3;
+    int n517 = n223/3;
+    int n518 = (n516*3)+n517;
+    int n519 = n518%3;
+    int n520 = n518/3;
+    int n521 = (n519*3)+n520;
+    int n523;
+    int n522 = n521%3;
+    n523 = 1+n522;
+    int n525;
+    int n524 = n518%3;
+    n525 = 1+n524;
+    a221[n223] = a54[n518]*i2d(b2i(!(n523<n525)));
+  }
 
   /* const int nprocs = omp_get_num_procs(); */
   const int nthreads = omp_get_max_threads();
   /* printf("Processors: %d\n", nprocs); */
   /* printf("Threads: %d\n", nthreads); */
   //printf("Allocating 2 * %d * %lu bytes\n", nprocs, sizeof(double)*18);
-  double* a162_all = (double*)malloc(nthreads*sizeof(double)*64);
-  double* a396_all = (double*)malloc(nthreads*sizeof(double)*64);
-  double* a561_all = (double*)malloc(nthreads*sizeof(double)*64);
+
+  double* a242_a = (double*)malloc(nthreads*sizeof(double)*64);
+  double* a257_a = (double*)malloc(nthreads*sizeof(double)*64);
+  double* a268_a = (double*)malloc(nthreads*sizeof(double)*64);
+  double* a274_a = (double*)malloc(nthreads*sizeof(double)*64);
+  double* a331_a = (double*)malloc(nthreads*sizeof(double)*64);
+  double* a387_a = (double*)malloc(nthreads*sizeof(double)*64);
+  double* a391_a = (double*)malloc(nthreads*sizeof(double)*64);
+  double* a403_a = (double*)malloc(nthreads*sizeof(double)*64);
+  double* a417_a = (double*)malloc(nthreads*sizeof(double)*64);
+
+  int n224 = now(0);
+  double d225 = 0.0;
 
   #pragma omp parallel
   {
     unsigned int th_id = omp_get_thread_num();
-    double* a162 = a162_all + th_id*64;
-    double* a396 = a396_all + th_id*64;
-    double* a561 = a561_all + th_id*64;
+    double* a242 = a242_a + th_id*64;
+    double* a257 = a257_a + th_id*64;
+    double* a268 = a268_a + th_id*64;
+    double* a274 = a274_a + th_id*64;
+    double* a331 = a331_a + th_id*64;
+    double* a387 = a387_a + th_id*64;
+    double* a391 = a391_a + th_id*64;
+    double* a403 = a403_a + th_id*64;
+    double* a417 = a417_a + th_id*64;
 
-  #pragma omp for reduction(+ : d133)
+  #pragma omp for reduction(+ : d225)
 
-  for (int n134 = 0; n134 < 1048576; n134++) {
-    int n141 = n134*15;
-    for (int n164 = 0; n164 < 18; n164++) {
-      a162[n164] = 0.0;
+
+  for (int n226 = 0; n226 < 1048576; n226++) {
+    for (int n244 = 0; n244 < 15; n244++) {
+      int n492 = 0;
+      for (int n493 = 0; n493 < 30; n493++) {
+        int n495 = n493+(n244*30);
+        bool b498;
+        int n496 = n495%30;
+        int n497 = xori((1+n226),shri((1+n226),1));
+        b498 = !(0==andi(n497,shli(1,n496)));
+        n492 = xori(n492,(a13[n495]*b2i(b498)));
+      }
+      a242[n244] = i2d(n492)/pow(2.0,30.0);
     }
-    int n165 = 1;
-    for (int n166 = 0; n166 < 5; n166++) {
-      int n167 = (-1)+n165;
-      int n170 = (5+n167)%5;
-      int n171 = (5+n167)/5;
-      int n172 = (n171*5)+n170;
-      int n174;
-      if (n25==0) {
-        n174 = 0;
-      } else {
-        int n173 = n172%n25;
-        n174 = a24[n173];
+    for (int n259 = 0; n259 < 15; n259++) {
+      double d482 = a242[n259]-0.5;
+      bool b483 = !(0.425<((d482<0.0) ? -d482 : d482));
+      double d484 = d482;
+      if (!(b483)) {
+        double d485 = 0.5+(d482*i2d(-((d482<0.0) ? (-1) : 1)));
+        double d486 = sqrt(-ln(d485));
+        double d487 = (-5.0)+d486;
+        double d488 = (-1.6)+d486;
+        double d489 = (((d488*((d488*((d488*((d488*((d488*((d488*((d488*0.0234983900035)+0.241780725177))+1.27045825245))+3.64784832476))+5.76949722146))+4.63033784616))+1.42343711075))/(d488*((d488*((d488*((d488*((d488*((d488*((d488*5.4759485925e-4)+0.0151986665636))+0.148103976427))+0.689767334985))+1.67638483018))+2.05319162664))+1.0)))*i2d(b2i(d486<=5.0)))+(((d487*((d487*((d487*((d487*((d487*((d487*((d487*2.71356590314e-4)+0.00124266094739))+0.0265321895266))+0.296560571829))+1.78482653992))+5.46378491116))+6.6579046435))/(d487*((d487*((d487*((d487*((d487*((d487*((d487*1.42151177876e-7)+1.84631831751e-5))+7.86869131146e-4))+0.0148753612909))+0.136929880923))+0.599832206556))+1.0)))*i2d(b2i(!(d486<=5.0))));
+        d484 = d489*i2d((d482<0.0) ? (-1) : 1);
       }
-      int n177 = n174*3;
-      int n178 = (-1)+n165;
-      int n181 = n178*3;
-      int n182 = (-1)+n165;
-      int n185 = (10+n182)%5;
-      int n186 = (10+n182)/5;
-      int n187 = (n186*5)+n185;
-      int n189;
-      if (n25==0) {
-        n189 = 0;
-      } else {
-        int n188 = n187%n25;
-        n189 = a24[n188];
+      double d490 = d484;
+      if (b483) {
+        double d491 = 0.180625-(d484*d484);
+        d490 = d484*((d491*((d491*((d491*((d491*((d491*((d491*((d491*35939.6565123)+67265.770927))+45921.9539315))+13731.6937655))+1971.59095031))+133.141667892))+3.3871328728))/(d491*((d491*((d491*((d491*((d491*((d491*((d491*33955.5810146)+39307.8958001))+21213.7943016))+5394.19602142))+687.187007492))+42.3133307016))+1.0)));
       }
-      int n192 = n189*3;
-      int n197 = (-1)+n165;
-      int n200 = n197%5;
-      int n201 = n197/5;
-      int n202 = (n201*5)+n200;
-      int n204;
-      if (n25==0) {
-        n204 = 0;
-      } else {
-        int n203 = n202%n25;
-        n204 = a24[n203];
-      }
-      int n205 = 1+n204;
-      int n206 = 1;
-      for (int n207 = 0; n207 < 3; n207++) {
-        int n209 = (-1)+n206;
-        int n212 = (n209+n177)%3;
-        int n213 = (n209+n177)/3;
-        int n214 = (n213*3)+n212;
-        int n215 = (-1)+n165;
-        int n218 = (5+n215)%5;
-        int n219 = (5+n215)/5;
-        int n220 = (n219*5)+n218;
-        double d222;
-        if (n16==0) {
-          d222 = 0.0;
-        } else {
-          int n221 = n220%n16;
-          d222 = a15[n221];
-        }
-        int n224 = (n209+n181)%3;
-        int n225 = (n209+n181)/3;
-        int n226 = (n225*3)+n224;
-        int n228 = n226%3;
-        int n229 = n226/3;
-        int n230 = (n228*5)+n229;
-        double d238;
-        int n231 = n230%5;
-        int n233 = n231%5;
-        int n234 = n231/5;
-        int n235 = (n234*5)+n233;
-        double d237;
-        if (n16==0) {
-          d237 = 0.0;
-        } else {
-          int n236 = n235%n16;
-          d237 = a15[n236];
-        }
-        d238 = d237;
-        double d291;
-        int n239 = n226%15;
-        int n240 = (n239+n141)%15;
-        int n241 = (n239+n141)/15;
-        int n242 = (n241*15)+n240;
-        int n243 = 0;
-        for (int n244 = 0; n244 < 30; n244++) {
-          int n246 = (n244+(n242*30))%450;
-          int n247 = (n244+(n242*30))/450;
-          int n248 = n246%30;
-          int n249 = n246/30;
-          int n250 = (n247*30)+n248;
-          int n251 = (n249*31457280)+n250;
-          bool b266;
-          int n252 = n251%31457280;
-          int n255 = n252%30;
-          int n256 = n252/30;
-          int n257 = (n255*1048576)+n256;
-          int n258 = n257%1048576;
-          int n261 = n252%30;
-          int n262 = n252/30;
-          int n263 = (n261*1048576)+n262;
-          int n264 = n263%1048576;
-          int n265 = n252%30;
-          b266 = !(0==andi(xori((1+n258),shri((1+n264),1)),shli(1,n265)));
-          int n268 = (n244+(n242*30))%450;
-          int n269 = (n244+(n242*30))/450;
-          int n270 = n268%30;
-          int n271 = n268/30;
-          int n272 = (n270*15)+n271;
-          int n273 = (n269*450)+n272;
-          int n281;
-          int n274 = n273%450;
-          int n276 = n274%15;
-          int n277 = n274/15;
-          int n278 = (n276*30)+n277;
-          int n280;
-          if (n7==0) {
-            n280 = 0;
-          } else {
-            int n279 = n278%n7;
-            n280 = a6[n279];
-          }
-          n281 = n280;
-          n243 = xori(n243,(b2i(b266)*n281));
-        }
-        double d282 = (i2d(n243)/pow(2.0,30.0))-0.5;
-        double d283 = 0.180625-(d282*d282);
-        double d284 = d282*((d283*((d283*((d283*((d283*((d283*((d283*((d283*35939.6565123)+67265.770927))+45921.9539315))+13731.6937655))+1971.59095031))+133.141667892))+3.3871328728))/(d283*((d283*((d283*((d283*((d283*((d283*((d283*33955.5810146)+39307.8958001))+21213.7943016))+5394.19602142))+687.187007492))+42.3133307016))+1.0)));
-        double d285 = 0.5+(d282*i2d(-((d282<0.0) ? (-1) : 1)));
-        double d286 = pow(-ln(d285),0.5);
-        double d287 = (-5.0)+d286;
-        double d288 = (-1.6)+d286;
-        double d289 = (((d288*((d288*((d288*((d288*((d288*((d288*((d288*((7.74545014278*pow(10.0,(-4.0)))+0.0227238449893))+0.241780725177))+1.27045825245))+3.64784832476))+5.76949722146))+4.63033784616))+1.42343711075))/(d288*((d288*((d288*((d288*((d288*((d288*((d288*((1.05075007164*pow(10.0,(-9.0)))+(5.475938085*pow(10.0,(-4.0)))))+0.0151986665636))+0.148103976427))+0.689767334985))+1.67638483018))+2.05319162664))+1.0)))*i2d(b2i(d286<=5.0)))+(((d287*((d287*((d287*((d287*((d287*((d287*((d287*((2.01033439929*pow(10.0,(-7.0)))+(2.71155556874*pow(10.0,(-4.0)))))+0.00124266094739))+0.0265321895266))+0.296560571829))+1.78482653992))+5.46378491116))+6.6579046435))/(d287*((d287*((d287*((d287*((d287*((d287*((d287*((2.04426310339*pow(10.0,(-15.0)))+(1.42151175832*pow(10.0,(-7.0)))))+(1.84631831751*pow(10.0,(-5.0)))))+(7.86869131146*pow(10.0,(-4.0)))))+0.0148753612909))+0.136929880923))+0.599832206556))+1.0)))*i2d(b2i(!(d286<=5.0))));
-        double d290 = d289*i2d((d282<0.0) ? (-1) : 1);
-        d291 = (d290*i2d(1-b2i(!(0.425<((d282<0.0) ? -d282 : d282)))))+(d284*i2d(b2i(!(0.425<((d282<0.0) ? -d282 : d282)))));
-        int n293 = (n209+n192)%3;
-        int n294 = (n209+n192)/3;
-        int n295 = (n294*3)+n293;
-        int n296 = (-1)+n165;
-        int n299 = (10+n296)%5;
-        int n300 = (10+n296)/5;
-        int n301 = (n300*5)+n299;
-        double d303;
-        if (n16==0) {
-          d303 = 0.0;
-        } else {
-          int n302 = n301%n16;
-          d303 = a15[n302];
-        }
-        int n304 = (-1)+n206;
-        int n305 = (((-1)+n205)*3)+n304;
-        a162[n305] = (d222*a162[n214])+((d238*d291)+(d303*a162[n295]));
-        n206 = 1+n206;
-      }
-      n165 = 1+n165;
+      a257[n259] = d490;
     }
-    for (int n397 = 0; n397 < 3; n397++) {
-      int n398 = n397*6;
-      for (int n399 = 0; n399 < 6; n399++) {
-        int n400 = n399+n398;
-        int n407 = n400%6;
-        int n408 = n400/6;
-        int n409 = (n407*3)+n408;
-        double d464;
-        if (n409<3) {
-          int n412 = n409%3;
-          int n413 = n409/3;
-          int n414 = n412+n413;
-          double d416;
-          if (n42==0) {
-            d416 = 0.0;
-          } else {
-            int n415 = n414%n42;
-            d416 = a41[n415];
-          }
-          d464 = d416;
+    for (int n270 = 0; n270 < 15; n270++) {
+      double d481 = a257[n270];
+      a268[n270] = a197[n270]*d481;
+    }
+    for (int n276 = 0; n276 < 18; n276++) {
+      a274[n276] = 0.0;
+    }
+    int n277 = 1;
+    for (int n278 = 0; n278 < 5; n278++) {
+      int n280 = (-1)+n277;
+      int n282 = a137[n280];
+      int n284 = n282*3;
+      int n286 = (-1)+n277;
+      int n288 = n286*3;
+      int n290 = (-1)+n277;
+      int n292 = a151[n290];
+      int n294 = n292*3;
+      int n298 = (-1)+n277;
+      int n299 = a124[n298]+1;
+      int n300 = 1;
+      for (int n301 = 0; n301 < 3; n301++) {
+        int n304 = (-1)+n300;
+        int n305 = n304+n284;
+        int n306 = n305%3;
+        int n307 = n305/3;
+        int n308 = (n307*3)+n306;
+        int n310 = (-1)+n277;
+        int n311 = n304+n288;
+        int n312 = n311%3;
+        int n313 = n311/3;
+        int n314 = (n313*3)+n312;
+        int n315 = n304+n294;
+        int n316 = n315%3;
+        int n317 = n315/3;
+        int n318 = (n317*3)+n316;
+        int n320 = (-1)+n277;
+        int n321 = (-1)+n300;
+        int n322 = (((-1)+n299)*3)+n321;
+        a274[n322] = (a172[n310]*a274[n308])+(a268[n314]+(a184[n320]*a274[n318]));
+        n300 = 1+n300;
+      }
+      n277 = 1+n277;
+    }
+    for (int n333 = 0; n333 < 15; n333++) {
+      int n478 = 3+n333;
+      double d479 = a274[n333];
+      a331[n333] = a274[n478]-d479;
+    }
+    for (int n389 = 0; n389 < 18; n389++) {
+      int n453 = n389%6;
+      int n454 = n389/6;
+      int n455 = (n453*3)+n454;
+      double d477;
+      if (n455<3) {
+        int n456 = n455%3;
+        int n457 = n455/3;
+        int n458 = n456+n457;
+        d477 = a67[n458];
+      } else {
+        int n459 = (-3)+n455;
+        int n460 = n459%3;
+        int n461 = n459/3;
+        int n462 = (n461*3)+n460;
+        int n463 = n462%3;
+        int n464 = n462/3;
+        double d465 = 0.0;
+        for (int n466 = 0; n466 < 3; n466++) {
+          int n468 = (n464*3)+n466;
+          int n469 = (n463*15)+n468;
+          double d471;
+          int n470 = n469%15;
+          d471 = a331[n470];
+          int n473 = (n466*3)+n463;
+          int n474 = (n464*9)+n473;
+          double d476;
+          int n475 = n474%9;
+          d476 = a221[n475];
+          d465 = d465+(d471*d476);
+        }
+        d477 = exp(a99[n462]+(d465*a83[n462]));
+      }
+      a387[n389] = d477;
+    }
+    for (int n392 = 0; n392 < 3; n392++) {
+      int n393 = n392*6;
+      for (int n394 = 0; n394 < 6; n394++) {
+        int n396 = n394+n393;
+        if (n394==0) {
+          a391[n396] = a387[n396];
         } else {
-          int n418 = ((-3)+n409)%3;
-          int n419 = ((-3)+n409)/3;
-          int n420 = (n418*5)+n419;
-          int n422 = n420%5;
-          int n423 = n420/5;
-          int n424 = (n422*3)+n423;
-          double d426;
-          if (n59==0) {
-            d426 = 0.0;
-          } else {
-            int n425 = n424%n59;
-            d426 = a58[n425];
-          }
-          double d427 = 0.0;
-          for (int n428 = 0; n428 < 3; n428++) {
-            int n430 = (n428+(n424*3))%9;
-            int n431 = (n428+(n424*3))/9;
-            int n432 = n430%3;
-            int n433 = n430/3;
-            int n434 = (n431*3)+n432;
-            int n435 = (n433*15)+n434;
-            double d439;
-            int n436 = n435%15;
-            int n437 = 3+n436;
-            double d438;
-            if (!(n436<18)) {
-              d438 = 0.0;
-            } else {
-              d438 = a162[n436];
+          a391[n396] = a391[((-1)+n396)]*a387[n396];
+        }
+      }
+    }
+    for (int n405 = 0; n405 < 15; n405++) {
+      int n449 = 3+n405;
+      int n450 = n449%3;
+      int n451 = n449/3;
+      int n452 = (n450*6)+n451;
+      a403[n405] = a391[n452];
+    }
+    double a406[] = {3758.05, 11840.0, 1200.0};
+    for (int n419 = 0; n419 < 5; n419++) {
+      double d445 = HUGE_VAL;
+      for (int n446 = 0; n446 < 3; n446++) {
+        int n447 = n446+(n419*3);
+        int n448 = n447%3;
+        d445 = mind(d445,(a403[n447]*(1.0/a406[n448])));
+      }
+      a417[n419] = d445;
+    }
+    bool b421 = !(a417[0]<1.0);
+    double d422 = 0.0;
+    if (!(b421)) {
+      bool b424 = !(a417[1]<1.0);
+      double d425 = 0.0;
+      if (!(b424)) {
+        bool b427 = !(a417[2]<1.0);
+        double d428 = 0.0;
+        if (!(b427)) {
+          bool b430 = !(a417[3]<1.0);
+          double d431 = 0.0;
+          if (!(b430)) {
+            bool b433 = !(a417[4]<1.0);
+            double d434 = 0.0;
+            if (!(b433)) {
+              bool b436 = !(a417[4]<0.75);
+              double d437 = 0.0;
+              if (!(b436)) {
+                d437 = a417[4]*(1e3*a112[4]);
+              }
+              double d439 = d437;
+              if (b436) {
+                d439 = 1e3*a112[4];
+              }
+              d434 = d439;
             }
-            d439 = a162[n437]-d438;
-            int n441 = (n428+(n424*3))%9;
-            int n442 = (n428+(n424*3))/9;
-            int n443 = n441%3;
-            int n444 = n441/3;
-            int n445 = (n443*3)+n444;
-            int n446 = (n442*9)+n445;
-            double d461;
-            int n447 = n446%9;
-            int n449 = n447%3;
-            int n450 = n447/3;
-            int n451 = (n449*3)+n450;
-            double d453;
-            if (n34==0) {
-              d453 = 0.0;
-            } else {
-              int n452 = n451%n34;
-              d453 = a33[n452];
+            double d440 = d434;
+            if (b433) {
+              d440 = 1750.0*a112[4];
             }
-            int n456 = n451%3;
-            int n457 = n451/3;
-            int n458 = (n456*3)+n457;
-            int n459 = n458%3;
-            int n460 = n451%3;
-            d461 = d453*i2d(b2i(!((1+n459)<(1+n460))));
-            d427 = d427+(d439*d461);
+            d431 = d440;
           }
-          double d463;
-          if (n50==0) {
-            d463 = 0.0;
-          } else {
-            int n462 = n424%n50;
-            d463 = a49[n462];
+          double d441 = d431;
+          if (b430) {
+            d441 = 1600.0*a112[3];
           }
-          d464 = pow(2.71828182846,(d426+(d427*d463)));
+          d428 = d441;
         }
-        if (n399==0) {
-          a396[n400] = d464;
-        } else {
-          a396[n400] = a396[((-1)+n400)]*d464;
+        double d442 = d428;
+        if (b427) {
+          d442 = 1450.0*a112[2];
         }
+        d425 = d442;
       }
+      double d443 = d425;
+      if (b424) {
+        d443 = 1300.0*a112[1];
+      }
+      d422 = d443;
     }
-    double a471[] = {3758.05, 11840.0, 1200.0};
-    double d509 = HUGE_VAL;
-    for (int n510 = 0; n510 < 3; n510++) {
-      int n511 = 15+n510;
-      int n518 = n511%3;
-      int n519 = n511/3;
-      int n520 = (n518*6)+n519;
-      int n521 = (12+n510)%3;
-      d509 = mind(d509,(a396[n520]*(1.0/a471[n521])));
+    double d444 = d422;
+    if (b421) {
+      d444 = 1150.0*a112[0];
     }
-    bool a522[] = {!(d509<0.75), true};
-    double d524;
-    if (n67==0) {
-      d524 = 0.0;
+    d225 = d225+d444;
+  }
+  }
+
+  double d499 = d225/1048576.0;
+  int n500 = now(1);
+  free(a242_a);
+  free(a257_a);
+  free(a268_a);
+  free(a274_a);
+  free(a331_a);
+  free(a387_a);
+  free(a391_a);
+  free(a403_a);
+  free(a417_a);
+
+  char a501[] = {'R', 'E', 'S', 'U', 'L', 'T', ':', ' '};
+  char* a502 = (char*)malloc(sizeof(char)*32);
+  formatD(a502,d499);
+  int n503 = 8+strlen(a502);
+  for (int n505 = 0; n505 < n503; n505++) {
+    char c507;
+    if (n505<8) {
+      c507 = a501[n505];
     } else {
-      int n523 = 4%n67;
-      d524 = a66[n523];
+      int n506 = (-8)+n505;
+      c507 = a502[n506];
     }
-    double d525 = 1e3*d524;
-    double d530 = HUGE_VAL;
-    for (int n531 = 0; n531 < 3; n531++) {
-      int n532 = 15+n531;
-      int n539 = n532%3;
-      int n540 = n532/3;
-      int n541 = (n539*6)+n540;
-      int n542 = (12+n531)%3;
-      d530 = mind(d530,(a396[n541]*(1.0/a471[n542])));
-    }
-    double a543[] = {d525, (d530*d525)};
-    int n544 = 0;
-    for (int n545 = 0; n545 < 7; n545++) {
-      bool b560;
-      if (n545<5) {
-        double d547 = HUGE_VAL;
-        for (int n548 = 0; n548 < 3; n548++) {
-          int n549 = (n548+(n545*3))+3;
-          int n556 = n549%3;
-          int n557 = n549/3;
-          int n558 = (n556*6)+n557;
-          int n559 = (n548+(n545*3))%3;
-          d547 = mind(d547,(a396[n558]*(1.0/a471[n559])));
-        }
-        b560 = !(d547<1.0);
-      } else {
-        b560 = a522[((-5)+n545)];
-      }
-      n544 = n544+b2i(b560);
-    }
-    int n562 = 0;
-    for (int n563 = 0; n563 < 7; n563++) {
-      bool b578;
-      if (n563<5) {
-        double d565 = HUGE_VAL;
-        for (int n566 = 0; n566 < 3; n566++) {
-          int n567 = (n566+(n563*3))+3;
-          int n574 = n567%3;
-          int n575 = n567/3;
-          int n576 = (n574*6)+n575;
-          int n577 = (n566+(n563*3))%3;
-          d565 = mind(d565,(a396[n576]*(1.0/a471[n577])));
-        }
-        b578 = !(d565<1.0);
-      } else {
-        b578 = a522[((-5)+n563)];
-      }
-      if (b578) {
-        double d581;
-        if (n563<5) {
-          double d580;
-          if (n67==0) {
-            d580 = 0.0;
-          } else {
-            int n579 = n563%n67;
-            d580 = a66[n579];
-          }
-          d581 = d580*i2d(1000+(150*(1+n563)));
-        } else {
-          d581 = a543[((-5)+n563)];
-        }
-        a561[n562] = d581;
-        n562 = 1+n562;
-      }
-    }
-    d133 = d133+a561[0];
-  }
-  }
-  free(a162_all);
-  free(a396_all);
-  free(a561_all);
-  double d582 = d133/1048576.0;
-  int n583 = now(1);
-  char a584[] = {'R', 'E', 'S', 'U', 'L', 'T', ':', ' '};
-  char* a585 = (char*)malloc(sizeof(char)*32);
-  formatD(a585,d582);
-  int n594 = 8+strlen(a585);
-  for (int n595 = 0; n595 < n594; n595++) {
-    char c596 = (n595<8) ? a584[n595] : a585[((-8)+n595)];
-    printf("%c",c596);
+    printf("%c",c507);
   }
   printf("\n");
-  char a597[] = {'T', 'I', 'M', 'I', 'N', 'G', ':', ' '};
-  char* a598 = (char*)malloc(sizeof(char)*27);
-  sprintf(a598,"%d",(n583-n72));
-  int n607 = 8+strlen(a598);
-  for (int n608 = 0; n608 < n607; n608++) {
-    char c609 = (n608<8) ? a597[n608] : a598[((-8)+n608)];
-    printf("%c",c609);
+  char a508[] = {'T', 'I', 'M', 'I', 'N', 'G', ':', ' '};
+  char* a509 = (char*)malloc(sizeof(char)*27);
+  sprintf(a509,"%d",(n500-n224));
+  int n510 = 8+strlen(a509);
+  for (int n512 = 0; n512 < n510; n512++) {
+    char c514;
+    if (n512<8) {
+      c514 = a508[n512];
+    } else {
+      int n513 = (-8)+n512;
+      c514 = a509[n513];
+    }
+    printf("%c",c514);
   }
   printf("\n");
   return 1.0;
