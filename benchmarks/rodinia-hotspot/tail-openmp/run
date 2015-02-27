@@ -1,0 +1,8 @@
+#!/bin/sh
+if [ -z "$1" ]; then
+  ./hotspot # Run with default number of threads
+else
+  OMP_NUM_THREADS=$1 ./hotspot
+fi
+
+

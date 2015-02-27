@@ -1,0 +1,5 @@
+#!/bin/sh
+
+. ../../../config
+
+gcc -I "$APLTAIL/include" -fopenmp -O2 -std=c99 hotspot.c -lm -o hotspot
