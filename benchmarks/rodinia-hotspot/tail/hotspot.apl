@@ -51,8 +51,8 @@ hotspot ← {
 ⍝ data files
 tempf  ← ReadCSVDouble '../data/temp_512'
 powerf ← ReadCSVDouble '../data/power_512'
-temp   ← 512 512 ⍴ tempf
-power  ← 512 512 ⍴ powerf
+temp   ← ⌷512 512 ⍴ tempf
+power  ← ⌷512 512 ⍴ powerf
 
 
 ⍝ We take the maximal element, to get  a scalar result, not really
