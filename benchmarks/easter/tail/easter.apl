@@ -20,4 +20,4 @@ run ← {
 
 run2 ← { ⌊/run ¨ ⍳ ⍵ }
 
-(run2 bench 2) 400
+100 (run2 bench {⍵}) 400

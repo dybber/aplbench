@@ -21,13 +21,11 @@ sobolIndR ← {
 n ← 10000
 
 ⍝ Compute pi
-t0 ← now 0
+pi ← {
+  ⍝ Compute 2 dimensional sobol vector
+  s ← (⍳ ⍵) sobolIndR 2 30⍴dirVec
+  4×(+/1>(+/s*2)*÷2)÷⍵
+}
 
-⍝ Compute 2 dimensional sobol vector
-s ← (⍳n) sobolIndR 2 30⍴dirVec
-pi ← 4×(+/1>(+/s*2)*÷2)÷n
+1000 (pi bench {⍵}) n
 
-t1 ← now 1
-⎕ ← 'RESULT: ' , ⍕ pi
-⎕ ← 'TIMING: ' , ⍕ (t1-t0)
-1.0
