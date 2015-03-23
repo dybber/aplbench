@@ -12,7 +12,7 @@ double kernel(int n171) {
   }
   a2[16] = '\000';
   int* a5 = (int*)malloc(sizeof(int)*1);
-  double* a6 = readDoubleVecFile(a2,a5);
+  double* a6 = readDoubleVecFile(a5,a2);
   int n7 = a5[0];
   char a10[] = {'.', '.', '/', 'd', 'a', 't', 'a', '/', 'p', 'o', 'w', 'e', 'r', '_', '5', '1', '2'};
   char* a11 = (char*)malloc(sizeof(char)*18);
@@ -21,7 +21,7 @@ double kernel(int n171) {
   }
   a11[17] = '\000';
   int* a14 = (int*)malloc(sizeof(int)*1);
-  double* a15 = readDoubleVecFile(a11,a14);
+  double* a15 = readDoubleVecFile(a14,a11);
   int n16 = a14[0];
   int n18 = now(0);
   int n33 = 262144;

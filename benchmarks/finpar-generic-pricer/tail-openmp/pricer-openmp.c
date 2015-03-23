@@ -12,7 +12,7 @@ double kernel(int n515) {
   }
   a2[32] = '\000';
   int* a5 = (int*)malloc(sizeof(int)*1);
-  int* a6 = readIntVecFile(a2,a5);
+  int* a6 = readIntVecFile(a5,a2);
   int n7 = a5[0];
   int* a13 = (int*)malloc(sizeof(int)*450);
   for (int n15 = 0; n15 < 450; n15++) {
@@ -32,7 +32,7 @@ double kernel(int n515) {
   }
   a18[22] = '\000';
   int* a21 = (int*)malloc(sizeof(int)*1);
-  double* a22 = readDoubleVecFile(a18,a21);
+  double* a22 = readDoubleVecFile(a21, a18);
   int n23 = a21[0];
   double* a29 = (double*)malloc(sizeof(double)*15);
   for (int n31 = 0; n31 < 15; n31++) {
@@ -52,7 +52,7 @@ double kernel(int n515) {
   }
   a34[21] = '\000';
   int* a37 = (int*)malloc(sizeof(int)*1);
-  int* a38 = readIntVecFile(a34,a37);
+  int* a38 = readIntVecFile(a37, a34);
   int n39 = a37[0];
   char a42[] = {'.', '.', '/', 'd', 'a', 't', 'a', '/', 'm', 'e', 'd', 'i', 'u', 'm', '/', 'm', 'd', '_', 'c'};
   char* a43 = (char*)malloc(sizeof(char)*20);
@@ -61,7 +61,7 @@ double kernel(int n515) {
   }
   a43[19] = '\000';
   int* a46 = (int*)malloc(sizeof(int)*1);
-  double* a47 = readDoubleVecFile(a43,a46);
+  double* a47 = readDoubleVecFile(a46, a43);
   int n48 = a46[0];
   double* a54 = (double*)malloc(sizeof(double)*9);
   for (int n56 = 0; n56 < 9; n56++) {
@@ -81,7 +81,7 @@ double kernel(int n515) {
   }
   a58[24] = '\000';
   int* a61 = (int*)malloc(sizeof(int)*1);
-  double* a62 = readDoubleVecFile(a58,a61);
+  double* a62 = readDoubleVecFile(a61, a58);
   int n63 = a61[0];
   double* a67 = (double*)malloc(sizeof(double)*3);
   for (int n69 = 0; n69 < 3; n69++) {
@@ -101,7 +101,7 @@ double kernel(int n515) {
   }
   a72[22] = '\000';
   int* a75 = (int*)malloc(sizeof(int)*1);
-  double* a76 = readDoubleVecFile(a72,a75);
+  double* a76 = readDoubleVecFile(a75,a72);
   int n77 = a75[0];
   double* a83 = (double*)malloc(sizeof(double)*15);
   for (int n85 = 0; n85 < 15; n85++) {
@@ -121,7 +121,7 @@ double kernel(int n515) {
   }
   a88[24] = '\000';
   int* a91 = (int*)malloc(sizeof(int)*1);
-  double* a92 = readDoubleVecFile(a88,a91);
+  double* a92 = readDoubleVecFile(a91,a88);
   int n93 = a91[0];
   double* a99 = (double*)malloc(sizeof(double)*15);
   for (int n101 = 0; n101 < 15; n101++) {
@@ -141,7 +141,7 @@ double kernel(int n515) {
   }
   a103[22] = '\000';
   int* a106 = (int*)malloc(sizeof(int)*1);
-  double* a107 = readDoubleVecFile(a103,a106);
+  double* a107 = readDoubleVecFile(a106,a103);
   int n108 = a106[0];
   double* a112 = (double*)malloc(sizeof(double)*5);
   for (int n114 = 0; n114 < 5; n114++) {
