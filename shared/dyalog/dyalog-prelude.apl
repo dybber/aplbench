@@ -96,3 +96,18 @@ days←{                                      ⍝ Days since 1899-12-31 (Meeus).
 unix_time_ms ← 86400000∘×∘(-∘25568)∘days
 
 now ← { unix_time_ms ⎕TS }
+
+
+bench ← {
+  init ← ⍵
+  f ← ⍺⍺
+  g ← { ⍵ ⋄ f init }
+  r ← g init
+  t0 ← now 0
+  r ← (g ⍣ ⍺) r
+  t1 ← now 1
+  ⎕ ← 'ITERATIONS: ' , ⍕ ⍺
+  ⎕ ← 'RESULT: ' , ⍕ ⍵⍵ r
+  ⎕ ← 'AVGTIMING: ' , ⍕ (t1-t0)÷⍺
+  1.0
+}

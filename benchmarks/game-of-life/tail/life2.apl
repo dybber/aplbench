@@ -21,13 +21,11 @@ square ← { x ← (5 ⊖ ⍵), 3 ⌽ ⍉ ⍵ ⋄ x ⍪ 4 ⊖ x }
 board ← square board
 board ← ⌷square board
 
-t0 ← now 0
-a ← (life ⍣ 20000) board
-t1 ← now 1
-⎕ ← 'RESULT: '
-⎕ ← a
-⎕ ← 'TIMING: ' , ⍕ (t1-t0)
-1.0
+
+life2 ← { (life ⍣ 20000) ⍵ }
+
+100 (life2 bench {⌈/⌈/⍵}) board
+
 
 ⍝ ⎕ ← a
 ⍝ ⎕ ← 'Stable: '

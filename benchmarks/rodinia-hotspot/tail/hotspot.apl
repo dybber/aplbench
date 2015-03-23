@@ -28,8 +28,8 @@ hotspot ← {
   step ← PRECISION ÷ max_slope
 
   k ← 0
-  c1 ← ⌷(row⍴1),((row, col-2)⍴2), row⍴1
-  c2 ← ⌷⍉(col⍴1), ((col, (row-2))⍴2), col ⍴ 1
+  c1 ← (row⍴1),((row, col-2)⍴2), row⍴1
+  c2 ← ⍉(col⍴1), ((col, (row-2))⍴2), col ⍴ 1
 
   iter ← {
     temp ← ⍵
@@ -49,13 +49,12 @@ hotspot ← {
 }
 
 ⍝ data files
-temp ← 512 512 ⍴ ReadCSVDouble '../data/temp_512'
-power ← 512 512 ⍴ ReadCSVDouble '../data/power_512'
+tempf  ← ReadCSVDouble '../data/temp_512'
+powerf ← ReadCSVDouble '../data/power_512'
+temp   ← 512 512 ⍴ tempf
+power  ← 512 512 ⍴ powerf
 
-hotspot2 ← { ⍵ ⋄ ⌈/⌈/temp hotspot power }
 
-r ← hotspot2 bench 1
-
-⎕ ← 'RESULT: ' , ⍕ r[1]
-⎕ ← 'TIMING: ' , ⍕ r[2]
-1.0
+⍝ We take the maximal element, to get  a scalar result, not really
+hotspot2 ← { ⍵ hotspot power }
+2 (hotspot2 bench {⌈/⌈/⍵}) temp
