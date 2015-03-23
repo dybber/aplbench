@@ -28,8 +28,8 @@ hotspot ← {
   step ← PRECISION ÷ max_slope
 
   k ← 0
-  c1 ← (row⍴1),((row, col-2)⍴2), row⍴1
-  c2 ← ⍉(col⍴1), ((col, (row-2))⍴2), col ⍴ 1
+  c1 ← ⌷(row⍴1),((row, col-2)⍴2), row⍴1
+  c2 ← ⌷⍉(col⍴1), ((col, (row-2))⍴2), col ⍴ 1
 
   iter ← {
     temp ← ⍵
@@ -52,9 +52,10 @@ hotspot ← {
 temp ← 512 512 ⍴ ReadCSVDouble '../data/temp_512'
 power ← 512 512 ⍴ ReadCSVDouble '../data/power_512'
 
-t0 ← now 0
-r ← temp hotspot power
-t1 ← now 1
-⎕ ← 'RESULT: ' , ⍕ ⌈/⌈/r
-⎕ ← 'TIMING: ' , ⍕ (t1-t0)
+hotspot2 ← { ⍵ ⋄ ⌈/⌈/temp hotspot power }
+
+r ← hotspot2 bench 1
+
+⎕ ← 'RESULT: ' , ⍕ r[1]
+⎕ ← 'TIMING: ' , ⍕ r[2]
 1.0
