@@ -1,0 +1,6 @@
+#!/bin/sh
+
+. ../../../config
+aplt -c -O 2 -s_tail -p_tail -p_types -o blacksch.tail $APLTAIL/lib/prelude.apl ../tail/blacksch.apl
+aplacc -t -c blacksch.tail > blacksch.hs
+ghc -O3 -threaded blacksch.hs -o run

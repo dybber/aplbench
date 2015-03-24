@@ -21,6 +21,9 @@ T ← 1
 r ← 0.1
 v ← 0.2
 
+n ← 10000
+years ← 10
+
 d1 ← { ((⍟S÷X)+(r+(v*2)÷2)×⍵)÷(v×⍵*0.5) }
 d2 ← { (d1 ⍵) -v×⍵*0.5 }
 
@@ -29,9 +32,6 @@ callPrice ← { (S×CND(d1 ⍵))-(X×*-r×⍵)×CND(d2 ⍵) }
 
 avg ← { (+/⍵) ÷ ⊃⍴ ⍵ }
 
-t0 ← now 0
-a←avg callPrice¨ (⍳ 100000) ÷ 10000
-t1 ← now 1
-⎕ ← 'RESULT: ' , ⍕ a
-⎕ ← 'TIMING: ' , ⍕ (t1-t0)
-1.0
+price ← { avg callPrice ¨ (⍳ ⍵ × years) ÷ ⍵ }
+
+30 (price bench {⍵}) n
