@@ -24,7 +24,7 @@ board ← ⌷square board
 
 life2 ← { (life ⍣ 20000) ⍵ }
 
-100 (life2 bench {⌈/⌈/⍵}) board
+1 (life2 bench {+/+/⍵}) board
 
 
 ⍝ ⎕ ← a

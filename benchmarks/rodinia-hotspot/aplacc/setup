@@ -1,0 +1,6 @@
+#!/bin/sh
+
+. ../../../config
+aplt -c -O 2 -s_tail -p_tail -p_types -o hotspot.tail $APLTAIL/lib/prelude.apl ../tail/hotspot.apl
+aplacc -t -c hotspot.tail > hotspot.hs
+ghc -O3 -threaded hotspot.hs -o run

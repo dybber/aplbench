@@ -1,4 +1,5 @@
-dirVec    ← ⌷15 30 ⍴ ReadCSVInt '../data/direction_vectors'
+dirVecf   ← ReadCSVInt '../data/direction_vectors'
+dirVec    ← ⌷15 30 ⍴ dirVecf
 grayCode ← { ⍵ xor ⍵ srl 1 }
 
 ⍝ Sobol sequences using inductive approach

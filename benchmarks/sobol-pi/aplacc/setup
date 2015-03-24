@@ -1,0 +1,6 @@
+#!/bin/sh
+
+. ../../../config
+aplt -c -O 2 -s_tail -p_tail -p_types -o sobol-pi.tail $APLTAIL/lib/prelude.apl ../tail/sobol-pi.apl
+aplacc -t -c sobol-pi.tail > sobol-pi.hs
+ghc -O3 -threaded sobol-pi.hs -o run
