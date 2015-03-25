@@ -1,0 +1,9 @@
+#!/bin/sh
+
+. ../../../config
+
+NAME=funintegral
+$APLTAIL/aplt -c -O 2 -s_tail -p_tail -p_types -o $NAME.tail $APLTAIL/lib/prelude.apl ../tail/$NAME.apl
+aplacc -t -c $NAME.tail > $NAME.hs
+ghc -O3 -threaded $NAME.hs -o run
+echo "Wrote file run"
