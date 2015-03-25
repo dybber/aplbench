@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <assert.h>
+#include <sys/time.h>
 
 #ifdef RD_WG_SIZE_0_0                                                            
         #define BLOCK_SIZE RD_WG_SIZE_0_0                                        
@@ -37,6 +38,17 @@ void run(int argc, char** argv);
 #define pin_stats_reset()   startCycle()
 #define pin_stats_pause(cycles)   stopCycle(cycles)
 #define pin_stats_dump(cycles)    printf("timer: %Lu\n", cycles)
+
+struct timeval tv_init;
+
+static int now (int x) {
+  struct timeval tv_check;
+  gettimeofday(&tv_check, NULL);
+  long int usec = tv_check.tv_usec - tv_init.tv_usec;
+  long int sec = tv_check.tv_sec - tv_init.tv_sec;
+  long int msec = usec / 1000;
+  return (int)(sec*1000+msec);
+}
 
 
 
@@ -264,6 +276,7 @@ void usage(int argc, char **argv)
 
 int main(int argc, char** argv)
 {
+    gettimeofday(&tv_init, NULL);
   printf("WG size of kernel = %d X %d\n", BLOCK_SIZE, BLOCK_SIZE);
 
     run(argc,argv);
@@ -325,10 +338,14 @@ void run(int argc, char** argv)
     cudaMalloc((void**)&MatrixPower, sizeof(float)*size);
     cudaMemcpy(MatrixPower, FilesavingPower, sizeof(float)*size, cudaMemcpyHostToDevice);
     printf("Start computing the transient temperature\n");
+    int t0 = now(0);
     int ret = compute_tran_temp(MatrixPower,MatrixTemp,grid_cols,grid_rows, \
 	 total_iterations,pyramid_height, blockCols, blockRows, borderCols, borderRows);
+  int t1 = now(1);
 	printf("Ending simulation\n");
     cudaMemcpy(MatrixOut, MatrixTemp[ret], sizeof(float)*size, cudaMemcpyDeviceToHost);
+
+  printf("TIMING: %d\n", t1-t0);
 
     writeoutput(MatrixOut,grid_rows, grid_cols, ofile);
 
