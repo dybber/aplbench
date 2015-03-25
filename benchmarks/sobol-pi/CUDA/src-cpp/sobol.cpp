@@ -56,8 +56,21 @@
 // direction vector of two dimensions, 32 directions
 unsigned int h_directions[] = {2147483648,1073741824,2684354560,1342177280,2281701376,603979776,301989888,754974720,1988100096,2654994432,136314880,1678770176,2988965888,2098462720,4272029696,3125346304,438599680,1226522624,3300237312,3816001536,4135585792,3728737280,2820672000,873465088,975702144,1494483520,3970040096,2538144464,1822721896,3613084132,3432358018,2271450689,2147483648,1073741824,3758096384,2952790016,2550136832,2483027968,2315255808,1526726656,864026624,3653238784,1914699776,1058013184,3250061312,2800484352,1401290752,703922176,171606016,455786496,3549618176,1778348032,3929540608,2871788544,1269173760,4259646208,1610779008,4026976576,2016733344,605713840,305826616,3475687836,3113412898,2197780721};
 
+struct timeval tv_init;
+
+static int now (int x) {
+  struct timeval tv_check;
+  gettimeofday(&tv_check, NULL);
+  long int usec = tv_check.tv_usec - tv_init.tv_usec;
+  long int sec = tv_check.tv_sec - tv_init.tv_sec;
+  long int msec = usec / 1000;
+  return (int)(sec*1000+msec);
+}
+
 int main(int argc, char *argv[])
 {
+    gettimeofday(&tv_init, NULL);
+
 
     // needed to work correctly with piped benchmarkrunner
     setlinebuf(stdout);
@@ -79,27 +92,29 @@ int main(int argc, char *argv[])
     
     checkCudaErrors(cudaGetDevice(&devID));
 
-    char inBuf[200]; // ridiculously large input buffer.
-    printf("OK\n");
+    // char inBuf[200]; // ridiculously large input buffer.
+    // printf("OK\n");
 
-    while (true) {
+    //while (true) {
 
-      fgets(inBuf, 200, stdin);
+    //   fgets(inBuf, 200, stdin);
 
-      if (sscanf(inBuf, "%u", &n_vectors) == 0)
-      {
-        // if input is not a number, it has to be "EXIT"
-        if (strncmp("EXIT",inBuf,4)==0)
-        {
-          printf("OK\n");
-          break;
-        }
-        else
-        {
-          printf("ERROR. Bad input: %s\n", inBuf);
-          break;
-        }
-      }
+    //   if (sscanf(inBuf, "%u", &n_vectors) == 0)
+    //   {
+    //     // if input is not a number, it has to be "EXIT"
+    //     if (strncmp("EXIT",inBuf,4)==0)
+    //     {
+    //       printf("OK\n");
+    //       break;
+    //     }
+    //     else
+    //     {
+    //       printf("ERROR. Bad input: %s\n", inBuf);
+    //       break;
+    //     }
+    //   }
+
+    n_vectors = 10000000;
 
     // Allocate memory for the arrays
     float  h_outputGPU  = 0;
@@ -135,6 +150,8 @@ int main(int argc, char *argv[])
     checkCudaErrors(cudaMemcpy(d_directions, h_directions, n_dimensions * n_directions * sizeof(unsigned int), cudaMemcpyHostToDevice));
     checkCudaErrors(cudaDeviceSynchronize());
 
+    int t0 = now(0);
+
     // Execute the QRNG on the device
     sobolGPU(n_vectors, n_dimensions, d_directions, d_output);
     checkCudaErrors(cudaDeviceSynchronize());
@@ -143,13 +160,16 @@ int main(int argc, char *argv[])
 
     //    checkCudaErrors(cudaMemcpy(&h_outputGPU, d_output, sizeof(float), cudaMemcpyDeviceToHost));
 
-    printf("RESULT %f\n", pi);
+    int t1 = now(1);
+    printf("Sobol numbers: %u\n", n_vectors);
+    printf("TIMING: %d\n", t1-t0);
+    printf("RESULT: %f\n", pi);
 
     // Cleanup and terminate
     checkCudaErrors(cudaFree(d_directions));
     checkCudaErrors(cudaFree(d_output));
 
-    }
+    //}
     cudaDeviceReset();
     exit(EXIT_SUCCESS);
 }
