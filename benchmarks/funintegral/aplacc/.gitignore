@@ -1,0 +1,5 @@
+*.hi
+*.hs
+run
+*.o
+*.tail
