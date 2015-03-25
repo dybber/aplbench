@@ -33,5 +33,5 @@ test ← {
   pi n
 }
 
-(test bench 30) 0
+(test bench 10) 0
 
