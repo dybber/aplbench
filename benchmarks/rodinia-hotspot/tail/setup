@@ -2,4 +2,4 @@
 
 . ../../../config
 $APLTAIL/aplt -unsafe -c -O 2 -oc hotspot.c $APLTAIL/lib/prelude.apl hotspot.apl
-gcc -I "$APLTAIL/include/" -O3 -std=c99 hotspot.c -lm -o run
+gcc -I "$APLTAIL/include/" -O1 -std=c99 hotspot.c -lm -o run

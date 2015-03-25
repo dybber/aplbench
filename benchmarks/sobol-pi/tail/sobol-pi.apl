@@ -28,5 +28,10 @@ pi ← {
   4×(+/1>(+/s*2)*÷2)÷⍵
 }
 
-20 (pi bench {⍵}) n
+test ← {
+  ⍵
+  pi n
+}
+
+(test bench 30) 0
 

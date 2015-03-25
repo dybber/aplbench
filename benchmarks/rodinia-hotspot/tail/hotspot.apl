@@ -56,5 +56,14 @@ power  ← ⌷512 512 ⍴ powerf
 
 
 ⍝ We take the maximal element, to get  a scalar result, not really
-hotspot2 ← { ⍵ hotspot power }
-2 (hotspot2 bench {⌈/⌈/⍵}) temp
+
+⍝ hotspot2 ← { ⍵ hotspot power }
+⍝ 2 (hotspot2 bench {⌈/⌈/⍵}) temp
+
+test ← { 
+  ⍵
+  ⌈/⌈/temp hotspot power
+}
+
+(test bench 10) 0
+ 

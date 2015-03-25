@@ -7,6 +7,6 @@ test ← {
   +/ signal input 100000000
 }
 
-(test bench 5) 0
+(test bench 10) 0
 
 
