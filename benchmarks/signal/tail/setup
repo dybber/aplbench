@@ -4,5 +4,5 @@
 
 NAME=signal
 $APLTAIL/aplt -unsafe -c -O 2 -oc $NAME.c $APLTAIL/lib/prelude.apl $NAME.apl
-gcc -I "$APLTAIL/include" -O3 -std=c99 $NAME.c -lm -o run
+gcc -I "$APLTAIL/include" -O1 -std=c99 $NAME.c -lm -o run
 echo "Wrote file run"
