@@ -34,4 +34,9 @@ avg ← { (+/⍵) ÷ ⊃⍴ ⍵ }
 
 price ← { avg callPrice ¨ (⍳ ⍵ × years) ÷ ⍵ }
 
-30 (price bench {⍵}) n
+test ← {
+  ⍵ 
+  price n
+}
+
+(test bench 30) 0

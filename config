@@ -1,5 +1,7 @@
 # Location of the local apltail installation
 APLTAIL=$HOME/gits/apltail
 
+GCC_OPT=-O1
+
 # How many times each benchmark should be executed
 RUNS=1

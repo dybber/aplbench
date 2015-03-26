@@ -2,4 +2,4 @@
 
 . ../../../config
 $APLTAIL/aplt -unsafe -c -O 2 -oc out.c $APLTAIL/lib/prelude.apl life2.apl
-gcc -I "$APLTAIL/include/" -O3 -std=c99 out.c -lm -o run
+gcc -I "$APLTAIL/include/" $GCC_OPT -std=c99 out.c -lm -o run

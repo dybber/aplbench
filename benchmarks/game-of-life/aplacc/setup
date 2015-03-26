@@ -1,6 +1,8 @@
 #!/bin/sh
 
 . ../../../config
-aplt -c -O 2 -s_tail -p_tail -p_types -o life2.tail $APLTAIL/lib/prelude.apl ../tail/life2.apl
-aplacc -t -c life2.tail > life2.hs
-ghc -O3 -threaded life2.hs -o run
+
+NAME=life2
+$APLTAIL/aplt -c -O 2 -s_tail -p_tail -p_types -o $NAME.tail $APLTAIL/lib/prelude.apl ../tail/$NAME.apl
+aplacc -t -c $NAME.tail > $NAME.hs
+ghc -O3 -threaded $NAME.hs -o run

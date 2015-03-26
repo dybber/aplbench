@@ -2,4 +2,4 @@
 
 . ../../../config
 $APLTAIL/aplt -unsafe -c -O 2 -oc sobol-pi-sequential.c $APLTAIL/lib/prelude.apl sobol-pi.apl
-gcc -I "$APLTAIL/include" -O3 -std=c99 sobol-pi-sequential.c -lm -o run
+gcc -I "$APLTAIL/include" $GCC_OPT -std=c99 sobol-pi-sequential.c -lm -o run

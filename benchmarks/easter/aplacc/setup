@@ -1,6 +1,8 @@
 #!/bin/sh
 
 . ../../../config
-aplt -c -O 2 -s_tail -p_tail -p_types -o easter.tail $APLTAIL/lib/prelude.apl ../tail/easter.apl
-aplacc -t -c easter.tail > easter.hs
-ghc -O3 -threaded easter.hs -o run
+
+NAME=easter
+$APLTAIL/aplt -c -O 2 -s_tail -p_tail -p_types -o $NAME.tail $APLTAIL/lib/prelude.apl ../tail/$NAME.apl
+aplacc -t -c $NAME.tail > $NAME.hs
+ghc -O3 -threaded $NAME.hs -o run
