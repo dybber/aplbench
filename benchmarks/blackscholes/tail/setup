@@ -1,5 +1,0 @@
-#!/bin/sh
-
-. ../../../config
-$APLTAIL/aplt -unsafe -c -O 2 -oc out.c $APLTAIL/lib/prelude.apl blacksch.apl
-gcc -I "$APLTAIL/include/" $GCC_OPT -std=c99 out.c -lm -o run
