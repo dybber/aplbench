@@ -2,6 +2,3 @@
 APLTAIL=$HOME/Documents/research/tail/apltail
 
 GCC_OPT=-O1
-
-# How many times each benchmark should be executed
-RUNS=1

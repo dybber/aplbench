@@ -1,0 +1,10 @@
+#!/bin/sh
+
+NAME=$1
+
+. $HIPERMARK_LIB_DIR/tail/config
+
+cp $HIPERMARK_LIB_DIR/tail/run run
+$APLTAIL/aplt -unsafe -c -O 2 -oc $NAME.c $APLTAIL/lib/prelude.apl $HIPERMARK_IMPLEMENTATION/$NAME.apl
+gcc -I "$APLTAIL/include/" -O3 -std=c99 $NAME.c -lm -o main
+

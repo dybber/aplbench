@@ -1,0 +1,2 @@
+# Add "-c" to use CUDA backend
+APLACC_OPT=

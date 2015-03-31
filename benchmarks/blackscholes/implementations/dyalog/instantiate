@@ -6,5 +6,7 @@
 # * $HIPERMARK_LIB_DIR contains shared data
 # * $HIPERMARK_IMPLEMENTATION points to the APL-source directory
 
-cat $HIPERMARK_LIB_DIR/apl/dyalog-prelude.apl $HIPERMARK_IMPLEMENTATION/../tail/blacksch.apl > dyalog-blackscholes.apl
+
+NAME=blacksch
+cat $HIPERMARK_LIB_DIR/apl/dyalog-prelude.apl $HIPERMARK_IMPLEMENTATION/../tail/$NAME.apl > dyalog-$NAME.apl
 cp $HIPERMARK_IMPLEMENTATION/run-dyalog run

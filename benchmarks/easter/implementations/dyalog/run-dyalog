@@ -1,7 +1,8 @@
 #!/bin/sh
 export MAXWS=2G
 
-OUTPUT=`rundyalog dyalog-blacksch.apl`
+OUTPUT=`rundyalog dyalog-easter.apl`
 
 $OUTPUT | grep TIMING | cut -c 9- > runtime.txt
 $OUTPUT | grep RESULT | cut -c 9- > result.json
+echo $OUTPUT

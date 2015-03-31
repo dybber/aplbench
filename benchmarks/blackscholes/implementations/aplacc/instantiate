@@ -1,11 +1,2 @@
 #!/bin/sh
-
-. $HIPERMARK_LIB_DIR/apl/apltail_config
-
-# CUDA=-c
-CUDA=
-
-NAME=blacksch
-$APLTAIL/aplt -c -O 2 -s_tail -p_tail -p_types -o $NAME.tail $APLTAIL/lib/prelude.apl $HIPERMARK_IMPLEMENTATION/../tail/$NAME.apl
-aplacc -t $CUDA $NAME.tail > $NAME.hs
-ghc -O3 -threaded $NAME.hs -o run
+$HIPERMARK_LIB_DIR/aplacc/instantiate blacksch

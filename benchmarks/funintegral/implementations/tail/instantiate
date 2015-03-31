@@ -1,0 +1,3 @@
+#!/bin/sh
+$HIPERMARK_LIB_DIR/tail/instantiate funintegral
+

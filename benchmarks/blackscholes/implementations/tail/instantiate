@@ -1,14 +1,2 @@
 #!/bin/sh
-
-## Assumptions
-#
-# * pwd is the instantiation directory
-# * $HIPERMARK_LIB_DIR contains shared data
-# * $HIPERMARK_IMPLEMENTATION points to the APL-source directory
-
-# Obtain configuration variables regarding APLTAIL
-. $HIPERMARK_LIB_DIR/apl/apltail_config
-
-$APLTAIL/aplt -unsafe -c -O 2 -oc blacksch.c $APLTAIL/lib/prelude.apl $HIPERMARK_IMPLEMENTATION/blacksch.apl
-gcc -I "$APLTAIL/include/" -O3 -std=c99 blacksch.c -lm -o BlackScholes
-cp $HIPERMARK_IMPLEMENTATION/run-tail run
+$HIPERMARK_LIB_DIR/tail/instantiate blacksch
