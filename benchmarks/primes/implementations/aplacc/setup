@@ -1,6 +1,0 @@
-#!/bin/sh
-
-. ../../../config
-aplt -c -O 2 -s_tail -p_tail -p_types -o primes.tail $APLTAIL/lib/prelude.apl ../tail/primes.apl
-aplacc -t -c primes.tail > primes.hs
-ghc -O3 -threaded primes.hs -o run

@@ -1,5 +1,0 @@
-#!/bin/sh
-
-. ../../../config
-$APLTAIL/aplt -unsafe -c -O 2 -oc out.c $APLTAIL/lib/prelude.apl primes.apl
-gcc -I "$APLTAIL/include/" -O3 -std=c99 out.c -lm -o run
