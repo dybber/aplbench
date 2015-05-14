@@ -60,17 +60,26 @@ build-cuda:
 
 ############## Call "make bench" in all directories ##############
 .PHONY: bench-tail
+
 bench-tail: build-tail
+	@echo "------------------- TAIL C Backend -------------------"
 	@(for d in $(BENCHMARK_TAIL_DIRS); do $(MAKE) -s --no-print-directory -C $$d bench; done;)
+	@echo "------------------------------------------------------"
 
 .PHONY: bench-aplacc
 bench-aplacc: build-aplacc
+	@echo "----------------------- APLAcc -----------------------"
 	@(for d in $(BENCHMARK_APLACC_DIRS); do $(MAKE) -s --no-print-directory -C $$d bench; done;)
+	@echo "------------------------------------------------------"
 
 .PHONY: bench-c
 bench-c: build-c
+	@echo "------------------------- C --------------------------"
 	@(for d in $(BENCHMARK_C_DIRS); do $(MAKE) -s --no-print-directory -C $$d bench; done;)
+	@echo "------------------------------------------------------"
 
 .PHONY: bench-cuda
 bench-cuda: build-cuda
+	@echo "------------------------ CUDA ------------------------"
 	@(for d in $(BENCHMARK_CUDA_DIRS); do $(MAKE) -s --no-print-directory -C $$d bench; done;)
+	@echo "------------------------------------------------------"
