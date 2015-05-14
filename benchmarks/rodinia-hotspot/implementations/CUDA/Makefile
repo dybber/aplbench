@@ -54,3 +54,5 @@ debugenum: $(SRC)
 
 clean: $(SRC)
 	rm -f $(EXE) $(EXE).linkinfo result.txt
+
+build: release
