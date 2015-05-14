@@ -49,8 +49,8 @@ hotspot ← {
 }
 
 ⍝ data files
-tempf  ← ReadCSVDouble '../data/temp_512'
-powerf ← ReadCSVDouble '../data/power_512'
+tempf  ← ReadCSVDouble '../../datasets/temp_512'
+powerf ← ReadCSVDouble '../../datasets/power_512'
 temp   ← ⌷512 512 ⍴ tempf
 power  ← ⌷512 512 ⍴ powerf
 

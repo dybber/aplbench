@@ -1,4 +1,4 @@
-dirVecf   ← ReadCSVInt '../data/direction_vectors'
+dirVecf   ← ReadCSVInt '../../datasets/direction_vectors'
 bitsNum   ← 30
 dirVec    ← ⌷2 bitsNum ⍴ dirVecf
 grayCode ← { ⍵ xor ⍵ srl 1 }
@@ -8,7 +8,7 @@ sobolIndI ← {
   dirVec ← ⍵
   n ← ⍺
   bits  ← ⍳bitsNum
-  is ← ⌷n ∘.{⍵ testBit (grayCode ⍺)} bits
+  is ← n ∘.{⍵ testBit (grayCode ⍺)} bits
   is xor.× ⌷⍉dirVec
 }
 
