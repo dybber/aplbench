@@ -1,5 +1,4 @@
-APLTAIL=$(HOME)/Documents/research/tail/apltail
-GCC_OPT=-O1
+include ../../../../config
 
 APLT=$(APLTAIL)/aplt
 PRELUDE=$(APLTAIL)/lib/prelude.apl

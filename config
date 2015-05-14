@@ -1,0 +1,3 @@
+APLTAIL=$(HOME)/tail/apltail
+GCC_OPT=-O1
+APLACC_OPT=-c
