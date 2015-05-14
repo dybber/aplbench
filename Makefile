@@ -36,7 +36,7 @@ clean-aplacc:
 clean-c:
 	@(for d in $(BENCHMARK_C_DIRS); do $(MAKE) -C $$d clean; done;)
 
-.PHONY: clean-c
+.PHONY: clean-cuda
 clean-cuda:
 	@(for d in $(BENCHMARK_CUDA_DIRS); do $(MAKE) -C $$d clean; done;)
 

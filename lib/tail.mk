@@ -20,7 +20,7 @@ build/$(TARGET).results: build/$(TARGET)
 
 .PHONY: bench
 bench: build/$(TARGET).results
-	@echo TAIL C $(TARGET) time: `cat build/$(TARGET).results | grep AVGTIMING | cut -c 12- | xargs printf "%.0f"` ms
+	@echo TAIL C $(TARGET) time: `cat build/$(TARGET).results | grep AVGTIMING | cut -c 12- | xargs printf "%.3f"` ms
 	@echo TAIL C $(TARGET) result: `cat build/$(TARGET).results | grep RESULT | cut -c 9-`
 
 

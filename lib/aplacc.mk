@@ -25,7 +25,7 @@ build/$(TARGET).results: build/$(TARGET)
 
 .PHONY: bench
 bench: build/$(TARGET).results
-	@echo APLAcc $(TARGET) time: `cat build/$(TARGET).results | grep AVGTIMING | cut -c 12- | xargs printf "%.0f"` ms
+	@echo APLAcc $(TARGET) time: `cat build/$(TARGET).results | grep AVGTIMING | cut -c 12- | xargs printf "%.3f"` ms
 	@echo APLAcc $(TARGET) result: `cat build/$(TARGET).results | grep -oP '(?<=RESULT: Array \(Z\) \[)([0-9]+(\.[0-9]+)?)(?=\])'`
 
 clean:
