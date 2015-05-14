@@ -1,7 +1,0 @@
-#!/bin/sh
-
-OUTPUT=$(./main)
-
-echo "$OUTPUT" | grep AVGTIMING | cut -c 12- | xargs printf "%.0f" > runtime.txt
-echo "$OUTPUT" | grep RESULT | cut -c 9- > result.json
-echo "$OUTPUT"

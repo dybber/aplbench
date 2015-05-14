@@ -1,4 +1,0 @@
-#!/bin/sh
-NAME=easter
-cat $HIPERMARK_LIB_DIR/apl/dyalog-prelude.apl $HIPERMARK_IMPLEMENTATION/../tail/$NAME.apl > dyalog-$NAME.apl
-cp $HIPERMARK_IMPLEMENTATION/run-dyalog run

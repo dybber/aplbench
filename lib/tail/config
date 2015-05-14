@@ -1,4 +1,0 @@
-# Location of the local apltail installation
-APLTAIL=$HOME/Documents/research/tail/apltail
-
-GCC_OPT=-O1

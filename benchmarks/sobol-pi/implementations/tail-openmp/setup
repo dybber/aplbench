@@ -1,4 +1,0 @@
-#!/bin/sh
-
-. ../../../config
-gcc -I "$APLTAIL/include" -fopenmp -O2 -std=c99 sobol-pi-openmp.c -lm -o sobol-pi-openmp

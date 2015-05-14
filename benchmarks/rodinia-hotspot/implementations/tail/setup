@@ -1,5 +1,0 @@
-#!/bin/sh
-
-. ../../../config
-$APLTAIL/aplt -unsafe -c -O 2 -oc rodinia-hotspot.c $APLTAIL/lib/prelude.apl rodinia-hotspot.apl
-gcc -I "$APLTAIL/include/" $GCC_OPT -std=c99 rodinia-hotspot.c -lm -o run

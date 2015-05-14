@@ -1,2 +1,0 @@
-#!/bin/sh
-cat ../../../shared/dyalog/dyalog-prelude.apl ../tail/primes.apl > run.apl
