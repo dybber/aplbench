@@ -26,3 +26,6 @@ test ← {
 }
 
 (test bench 30) 0
+
+⍝ Expected result: 30000413
+⍝ (Easter in year 3000)

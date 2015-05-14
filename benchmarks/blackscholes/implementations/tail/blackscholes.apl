@@ -39,4 +39,6 @@ test ← {
   price n
 }
 
+
 (test bench 30) 0
+⍝ 21.1901384

@@ -9,4 +9,5 @@ test ← {
 
 (test bench 30) 0
 
-
+⍝ Expected result: 158.7653869
+⍝ Computed w. Dyalog APL
