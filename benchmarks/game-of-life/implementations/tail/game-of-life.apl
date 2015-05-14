@@ -27,7 +27,8 @@ life2 ← {
   +/+/ (life ⍣ 2000) board
 }
 
-(life2 bench 10) 0
+r ← (life2 bench 10) 0
+r
 
 ⍝ ⎕ ← a
 ⍝ ⎕ ← 'Stable: '

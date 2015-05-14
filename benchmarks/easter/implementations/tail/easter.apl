@@ -25,7 +25,8 @@ test ← {
   run2 400
 }
 
-(test bench 30) 0
+r ← (test bench 30) 0
+r
 
 ⍝ Expected result: 30000413
 ⍝ (Easter in year 3000)
