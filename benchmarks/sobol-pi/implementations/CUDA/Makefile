@@ -144,6 +144,9 @@ SobolQRNG: sobol.o sobol_gold.o sobol_primitives.o sobol_gpu.o computepi.o
 run: build
 	./SobolQRNG
 
+bench: build
+	./SobolQRNG
+
 clean:
 	rm -f SobolQRNG sobol.o sobol_gold.o sobol_primitives.o sobol_gpu.o
 
