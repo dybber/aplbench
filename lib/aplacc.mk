@@ -7,10 +7,12 @@ PRELUDE=$(APLTAIL)/lib/prelude.apl
 
 build: build/$(TARGET)
 
+.INTERMEDIATE: build/$(TARGET).tail
 build/$(TARGET).tail:
 	mkdir -p build
 	$(APLTAIL)/aplt -c -O 2 -s_tail -p_tail -p_types -o build/$(TARGET).tail $(APLTAIL)/lib/prelude.apl $(APLFILE)
 
+.INTERMEDIATE: build/$(TARGET).hs
 build/$(TARGET).hs: build/$(TARGET).tail
 	aplacc -t $(APLACC_OPT) build/$(TARGET).tail > build/$(TARGET).hs
 
