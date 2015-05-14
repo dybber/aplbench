@@ -55,4 +55,9 @@ debugenum: $(SRC)
 clean: $(SRC)
 	rm -f $(EXE) $(EXE).linkinfo result.txt
 
+.PHONY: build
 build: release
+
+.PHONY: bench
+bench: hotspot
+	./hotspot 1024 1024 360 1 ../../datasets/temp_1024 ../../datasets/power_1024
