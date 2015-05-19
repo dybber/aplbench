@@ -1,10 +1,16 @@
 #!/usr/local/bin/mapl -script
+⍝ This is an APL implementation of the Rodinia KMeans benchmark
+⍝
+⍝ Originally implemented in ELI by Hanfeng Chen and Wai-Mee Ching
+⍝   http://fastarray.appspot.com/
+⍝
+⍝ Ported to Dyalog APL by Martin Dybdal
 
-⍝ Reads a data file (white space separated numbers)
+⍝ Reads a data file (comma separated numbers)
 ∇ data ← path readFile filename
   tie ← (path, filename) ⎕NTIE 0
   vec ← ⎕NREAD tie 80 (⎕NSIZE tie) 0
-  data ← ((⎕UCS 13) (⎕UCS 10) ' ') ⎕VFI vec
+  data ← ((⎕UCS 13) (⎕UCS 10) ',') ⎕VFI vec
   data ← ¯1↓⊃1↓data
 ∇
 
@@ -13,7 +19,7 @@ max_iterations ← 500
 nclusters ← 5
 
 ⍝ data
-datapath ← '../data/'
+datapath ← '../../datasets/'
 file ← '100'
 size ← 100 35
 
@@ -36,6 +42,8 @@ size ← 100 35
       preclust[t0;] ← preclust[t0;] + feature[curp;] ⍝7
       preclen[t0]  ← preclen[t0]  + 1                ⍝8
     :EndWhile
+
+    ⎕ ← index
 
     delta ← +/ mb ≠ index
     clusters[t2;] ← preclust[t2;] ÷ ⍉ (df[2],⍴t2) ⍴ preclen[t2 ← t1 / ⍳⍴t1 ← preclen ≠ 0]

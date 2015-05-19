@@ -10,6 +10,10 @@ build/$(TARGET).dyalog: $(PRELUDE) $(APLFILE)
 	mkdir -p build
 	cat $(PRELUDE) $(APLFILE) > build/$(TARGET).dyalog
 
+.PHONY:
+run: build/$(TARGET).dyalog
+	MAXWS=2G rundyalog build/$(TARGET).dyalog
+
 .PHONY: bench
 bench: build/$(TARGET).dyalog
 	MAXWS=2G rundyalog build/$(TARGET).dyalog 2> build/stderr.txt > build/stdout.txt
