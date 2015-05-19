@@ -1,6 +1,6 @@
-dirVecf   ← ReadCSVInt '../../datasets/direction_vectors'
-bitsNum   ← 30
-dirVec    ← ⌷2 bitsNum ⍴ dirVecf
+dirVecf  ← ReadCSVInt '../../datasets/direction_vectors'
+bitsNum  ← 30
+dirVec   ← ⌷(2 bitsNum) ⍴ dirVecf
 grayCode ← { ⍵ xor ⍵ srl 1 }
 
 ⍝ Sobol sequences using inductive approach
@@ -21,8 +21,8 @@ sobolIndR ← {
 n ← 1000000
 
 pi ← {
-  s ← (⍳ ⍵) sobolIndR 2 30⍴dirVec ⍝ 2 dimensional sobol vector
-  4×(+/1>(+/s*2)*÷2)÷⍵             ⍝ compute pi
+  s ← (⍳ ⍵) sobolIndR dirVec ⍝ create 2 dimensional sobol vector
+  4×(+/1>(+/s*2)*÷2)÷⍵        ⍝ compute pi
 }
 
 test ← {

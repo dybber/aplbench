@@ -2,7 +2,7 @@ BENCHMARKS_TAIL=funintegral signal sobol-pi rodinia-hotspot easter blackscholes 
 BENCHMARKS_APLACC=funintegral signal sobol-pi rodinia-hotspot game-of-life
 BENCHMARKS_C=funintegral signal rodinia-hotspot # Single-threaded C code
 BENCHMARKS_CUDA=sobol-pi rodinia-hotspot
-BENCHMARKS_DYALOG=funintegral signal easter
+BENCHMARKS_DYALOG=funintegral signal sobol-pi easter game-of-life finpar-generic-pricer
 
 BENCHMARK_TAIL_DIRS=$(BENCHMARKS_TAIL:%=benchmarks/%/implementations/tail/)
 BENCHMARK_APLACC_DIRS=$(BENCHMARKS_APLACC:%=benchmarks/%/implementations/aplacc/)
