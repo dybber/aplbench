@@ -9,7 +9,7 @@ sobolIndI ← {
   n ← ⍺
   bits  ← ⍳bitsNum
   is ← n ∘.{⍵ testBit (grayCode ⍺)} bits
-  is xor.× ⌷⍉dirVec
+  is xor.× ⍉dirVec
 }
 
 sobolIndR ← {
@@ -18,20 +18,16 @@ sobolIndR ← {
 }
 
 ⍝ Number of iterations
-n ← 10000000
+n ← 1000000
 
-⍝ Compute pi
 pi ← {
-  ⍝ Compute 2 dimensional sobol vector
-  s ← (⍳ ⍵) sobolIndR 2 30⍴dirVec
-⍝  4×(+/1>((s[;1]*2)+s[;2]*2)*÷2)÷n
-  4×(+/1>(+/s*2)*÷2)÷⍵
+  s ← (⍳ ⍵) sobolIndR 2 30⍴dirVec ⍝ 2 dimensional sobol vector
+  4×(+/1>(+/s*2)*÷2)÷⍵             ⍝ compute pi
 }
 
 test ← {
-  ⍵
+  dummy ← ⍵
   pi n
 }
 
 (test bench 30) 0
-

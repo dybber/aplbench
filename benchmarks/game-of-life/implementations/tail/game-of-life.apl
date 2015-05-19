@@ -23,12 +23,11 @@ board ← ⌷square board
 
 
 life2 ← {
-  ⍵
+  dummy ← ⍵
   +/+/ (life ⍣ 2000) board
 }
 
-r ← (life2 bench 10) 0
-r
+r ← (life2 bench 30) 0
 
 ⍝ ⎕ ← a
 ⍝ ⎕ ← 'Stable: '

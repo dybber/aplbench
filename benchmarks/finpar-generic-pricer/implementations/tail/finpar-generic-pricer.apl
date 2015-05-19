@@ -166,19 +166,24 @@ payoff2 ← {
   xss ← ⍵
   mins ← ⌷⌊/xss × (⍴xss)⍴ ÷ 3758.05 11840.0 1200.0
 
-  (mins[1] ≥ 1) { ⍵ ⋄ 1150.0 × md_disc[1]} else {
-    ⍵ ⋄ (mins[2] ≥ 1) { ⍵ ⋄ 1300.0 × md_disc[2]} else {
-      ⍵ ⋄ (mins[3] ≥ 1) { ⍵ ⋄ 1450.0 × md_disc[3]} else {
-        ⍵ ⋄ (mins[4] ≥ 1) { ⍵ ⋄ 1600.0 × md_disc[4]} else {
-          ⍵ ⋄ (mins[5] ≥ 1) { ⍵ ⋄ 1750.0 × md_disc[5]} else {
-            ⍵ ⋄ (mins[5] ≥ 0.75) { ⍵ ⋄ 1000.0 × md_disc[5]} else {
-              ⍵ ⋄ mins[5] × 1000.0 × md_disc[5]
-            } 0
-          } 0
-        } 0
-      } 0
-    } 0
-  } 0
+  i ← (mins ≥ 1)⍳1
+  (5 ≥ i) { dummy0 ← ⍵ ⋄ md_disc[i]×1000+150×i } else {
+    dummy1 ← ⍵ ⋄ 1000×md_disc[5]×(mins[5],1)[1+0.75≤mins[5]]
+  }
+
+  ⍝ (mins[1] ≥ 1) { dummy ← ⍵ ⋄ 1150.0 × md_disc[1]} else {
+  ⍝   dummy1 ← ⍵ ⋄ (mins[2] ≥ 1) { dummy2 ← ⍵ ⋄ 1300.0 × md_disc[2]} else {
+  ⍝     dummy3 ← ⍵ ⋄ (mins[3] ≥ 1) { dummy4 ← ⍵ ⋄ 1450.0 × md_disc[3]} else {
+  ⍝       dummy5 ← ⍵ ⋄ (mins[4] ≥ 1) { dummy6 ← ⍵ ⋄ 1600.0 × md_disc[4]} else {
+  ⍝         dummy7 ← ⍵ ⋄ (mins[5] ≥ 1) { dummy8 ← ⍵ ⋄ 1750.0 × md_disc[5]} else {
+  ⍝           dummy9 ← ⍵ ⋄ (mins[5] ≥ 0.75) { dummy10 ← ⍵ ⋄ 1000.0 × md_disc[5]} else {
+  ⍝             dummy11 ← ⍵ ⋄ mins[5] × 1000.0 × md_disc[5]
+  ⍝           } 0
+  ⍝         } 0
+  ⍝       } 0
+  ⍝     } 0
+  ⍝   } 0
+  ⍝ } 0
 
 }
 

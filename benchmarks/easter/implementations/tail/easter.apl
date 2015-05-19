@@ -14,14 +14,14 @@ easter←{                     ⍝ Easter Sunday in year ⍵
 }
 
 run ← {
-  ⍵ 
+  dummy ← ⍵ 
   ⌈/easter¨⍳ 3000
 }
 
 run2 ← { ⌊/run ¨ ⍳ ⍵ }
 
 test ← {
-  ⍵ + 1 
+  dummy ← ⍵
   run2 400
 }
 

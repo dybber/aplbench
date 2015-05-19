@@ -1,12 +1,14 @@
 BENCHMARKS_TAIL=funintegral signal sobol-pi rodinia-hotspot easter blackscholes game-of-life finpar-generic-pricer primes
 BENCHMARKS_APLACC=funintegral signal sobol-pi rodinia-hotspot game-of-life
-BENCHMARKS_C=rodinia-hotspot # Single-threaded C code
+BENCHMARKS_C=funintegral signal rodinia-hotspot # Single-threaded C code
 BENCHMARKS_CUDA=sobol-pi rodinia-hotspot
+BENCHMARKS_DYALOG=funintegral signal easter
 
 BENCHMARK_TAIL_DIRS=$(BENCHMARKS_TAIL:%=benchmarks/%/implementations/tail/)
 BENCHMARK_APLACC_DIRS=$(BENCHMARKS_APLACC:%=benchmarks/%/implementations/aplacc/)
 BENCHMARK_C_DIRS=$(BENCHMARKS_C:%=benchmarks/%/implementations/C/)
 BENCHMARK_CUDA_DIRS=$(BENCHMARKS_CUDA:%=benchmarks/%/implementations/CUDA/)
+BENCHMARK_DYALOG_DIRS=$(BENCHMARKS_DYALOG:%=benchmarks/%/implementations/dyalog/)
 
 .PHONY: bench
 bench: bench-tail bench-aplacc bench-c bench-cuda
@@ -40,6 +42,10 @@ clean-c:
 clean-cuda:
 	@(for d in $(BENCHMARK_CUDA_DIRS); do $(MAKE) -C $$d clean; done;)
 
+.PHONY: clean-dyalog
+clean-dyalog:
+	@(for d in $(BENCHMARK_DYALOG_DIRS); do $(MAKE) -C $$d clean; done;)
+
 
 ############## Call "make build" in all directories ##############
 .PHONY: build-tail
@@ -57,6 +63,10 @@ build-c:
 .PHONY: build-cuda
 build-cuda:
 	@(for d in $(BENCHMARK_CUDA_DIRS); do $(MAKE) -C $$d build; done;)
+
+.PHONY: build-dyalog
+build-dyalog:
+	@(for d in $(BENCHMARK_DYALOG_DIRS); do $(MAKE) -C $$d build; done;)
 
 ############## Call "make bench" in all directories ##############
 .PHONY: bench-tail
@@ -82,4 +92,10 @@ bench-c: build-c
 bench-cuda: build-cuda
 	@echo "------------------------ CUDA ------------------------"
 	@(for d in $(BENCHMARK_CUDA_DIRS); do $(MAKE) -s --no-print-directory -C $$d bench; done;)
+	@echo "------------------------------------------------------"
+
+.PHONY: bench-dyalog
+bench-dyalog: build-dyalog
+	@echo "----------------------- Dyalog -----------------------"
+	@(for d in $(BENCHMARK_DYALOG_DIRS); do $(MAKE) -s --no-print-directory -C $$d bench; done;)
 	@echo "------------------------------------------------------"

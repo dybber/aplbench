@@ -1,4 +1,4 @@
-path ← '../data/medium/'
+path ← '../../datasets/medium/'
 dirVec    ← 15 30 ⍴ ReadCSVInt (path ,'direction_vectors')
 bb_data   ← 3 5   ⍴ ReadCSVDouble (path, 'bb_data')
 bb_ind    ← 3 5   ⍴ ReadCSVInt (path, 'bb_ind')

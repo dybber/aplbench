@@ -3,10 +3,8 @@ primes ← {
   primes ← (1=+⌿0=A∘.|A)/A
 }
 
-⍝ 100 (primes bench {⌈/⍵}) 10000
-
 run ← {
-  ⍵ + 1
+  dummy ← ⍵
   ⌈/primes 10000
 }
 

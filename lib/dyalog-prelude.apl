@@ -75,13 +75,13 @@ ReadCSVInt ← csv_read
 
 w ← 32 ⍝ word size
 dec2bin ← {(w⍴2)⊤⍵}
-bin2dec ← {(w⍴2)⊥⍵}
+bin2dec ← {2⊥⍵}
 
-⍝ Bitwise operations
-sll ← {bin2dec (⍵↓dec2bin ⍺),⍵⍴0}
-srl ← {bin2dec (⍵⍴0),(-⍵)↓dec2bin ⍺}
+M←2*w
+sll ← {M|⍺×2*⍵}
+srl ← {⌊⍺÷2*⍵}
 xor ← {bin2dec (dec2bin ⍺) ≠ dec2bin ⍵}
-testBit ← {(dec2bin ⍵)[w-⍺-1]} ⍝ Does not work for other than scalar arguments!
+testBit ← {2|⌊⍵÷2*⍺-1}
 
 days←{                                      ⍝ Days since 1899-12-31 (Meeus).
     ⍺←17520902                              ⍝ start of Gregorian calendar.
@@ -97,17 +97,16 @@ unix_time_ms ← 86400000∘×∘(-∘25568)∘days
 
 now ← { unix_time_ms ⎕TS }
 
-
 bench ← {
-  init ← ⍵
+  init ← ⌷⍵
   f ← ⍺⍺
   g ← { ⍵ ⋄ f init }
   r ← g init
   t0 ← now 0
-  r ← (g ⍣ ⍺) r
+  r ← (f ⍣ ⍵⍵) ⍵
   t1 ← now 1
-  ⎕ ← 'ITERATIONS: ' , ⍕ ⍺
-  ⎕ ← 'RESULT: ' , ⍕ ⍵⍵ r
-  ⎕ ← 'AVGTIMING: ' , ⍕ (t1-t0)÷⍺
+  ⎕ ← 'ITERATIONS: ' , ⍵⍵
+  ⎕ ← 'RESULT: ' , ⍕ r
+  ⎕ ← 'AVGTIMING: ' , ⍕ (t1-t0)÷⍵⍵
   1.0
 }
