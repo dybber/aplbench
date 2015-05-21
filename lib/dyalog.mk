@@ -3,7 +3,6 @@ include ../../../../config
 PRELUDE=../../../../lib/dyalog-prelude.apl
 
 .PHONY: build
-
 build: build/$(TARGET).dyalog
 
 build/$(TARGET).dyalog: $(PRELUDE) $(APLFILE)

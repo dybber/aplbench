@@ -4,7 +4,6 @@ APLT=$(APLTAIL)/aplt
 PRELUDE=$(APLTAIL)/lib/prelude.apl
 
 .PHONY: build
-
 build: build/$(TARGET)
 
 build/$(TARGET).c:
@@ -22,7 +21,6 @@ build/$(TARGET).results: build/$(TARGET)
 bench: build/$(TARGET).results
 	@echo $(TARGET): `cat build/$(TARGET).results | grep AVGTIMING | cut -c 12- | xargs printf "%.3f"` ms, \
 	                  result: `cat build/$(TARGET).results | grep RESULT | cut -c 9-`
-
 
 clean:
 	rm -rf build/

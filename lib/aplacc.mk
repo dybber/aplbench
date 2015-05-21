@@ -4,7 +4,6 @@ APLT=$(APLTAIL)/aplt
 PRELUDE=$(APLTAIL)/lib/prelude.apl
 
 .PHONY: build
-
 build: build/$(TARGET)
 
 .INTERMEDIATE: build/$(TARGET).tail

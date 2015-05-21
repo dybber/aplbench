@@ -7,7 +7,6 @@
 ⍝ <LineFeed> and <CarriageReturn>
 (lf cr)←⎕UCS 10 13                         
 
-
 ⍝ Takes a string and partitions records.
 ⍝ Can deal with Mac/Unix/Windows files.
 ⍝ For that, CR+LF as well as single LFs are converted into CR.
